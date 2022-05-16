@@ -1,4 +1,4 @@
-import NewExpense from './NewExpense';
+import React, { useState } from 'react';
 
 const ExpenseForm = () => {
 	const classes = {
@@ -11,8 +11,31 @@ const ExpenseForm = () => {
 		amtInput: 'w-[70px] rounded-lg m-auto flow-root',
 		submit: 'bg-red-50 p-3 rounded-full hover:bg-red-100 m-auto flow-root',
 	};
+	// const [enteredTitle, setEnteredTitle] = useState('');
+	// const [enteredAmt, setEnteredAmt] = useState('');
+	// const [enteredDate, setEnteredDate] = useState('');
 
-	const addExpenseHandler = () => {};
+	const [userInput, setUserInput] = useState({
+		enteredTitle: '',
+		enteredAmt: '',
+		enteredDate: '',
+	});
+
+	const titleChangedHandler = (e) => {
+		setUserInput((prevState) => {
+			return { ...prevState, enteredTitle: e.target.value };
+		});
+	};
+	const amtChangedHandler = (e) => {
+		setUserInput((prevState) => {
+			return { ...prevState, enteredAmt: e.target.value };
+		});
+	};
+	const dateChangedHandler = (e) => {
+		setUserInput((prevState) => {
+			return { ...prevState, enteredDate: e.target.value };
+		});
+	};
 
 	return (
 		<form className={classes.form}>
@@ -23,6 +46,7 @@ const ExpenseForm = () => {
 						className={classes.input}
 						type='text'
 						name='expense-title'
+						onChange={titleChangedHandler}
 					/>
 				</div>
 				<div className={classes.controlParent}>
@@ -33,6 +57,7 @@ const ExpenseForm = () => {
 						min='0.1'
 						step='0.1'
 						name='expense-amount'
+						onChange={amtChangedHandler}
 					/>
 				</div>
 			</div>
@@ -45,14 +70,11 @@ const ExpenseForm = () => {
 						min='2019-01-01'
 						max='2022-6-1'
 						name='expense-date'
+						onChange={dateChangedHandler}
 					/>
 				</div>
 				<div className={classes.controlParent}>
-					<button
-						className={classes.submit}
-						type='submit'
-						onClick={addExpenseHandler}
-					>
+					<button className={classes.submit} type='submit'>
 						Add
 					</button>
 				</div>
