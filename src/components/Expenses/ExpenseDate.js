@@ -1,3 +1,6 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
 const ExpenseDate = (props) => {
 	const month = props.date.toLocaleString('en-US', { month: 'short' });
 	const day = props.date.toLocaleString('en-US', { day: '2-digit' });
@@ -17,6 +20,10 @@ const ExpenseDate = (props) => {
 			<p className={classes.year}>{year}</p>
 		</div>
 	);
+};
+
+ExpenseDate.propTypes = {
+	date: PropTypes.instanceOf(Date),
 };
 
 export default ExpenseDate;

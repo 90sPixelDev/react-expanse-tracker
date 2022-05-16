@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ExpenseDate from './ExpenseDate';
+import PropTypes from 'prop-types';
 
 const ExpenseItem = (props) => {
 	const [title, setTitle] = useState(props.title);
@@ -51,7 +52,6 @@ const ExpenseItem = (props) => {
 			randomLetters += arr[Math.floor(Math.random() * 26)];
 			setTitle(randomLetters);
 		}
-		console.log(randomLetters);
 	};
 
 	return (
@@ -74,6 +74,12 @@ const ExpenseItem = (props) => {
 			</div>
 		</div>
 	);
+};
+
+ExpenseItem.propTypes = {
+	title: PropTypes.string,
+	date: PropTypes.instanceOf(Date),
+	amount: PropTypes.number,
 };
 
 export default ExpenseItem;
