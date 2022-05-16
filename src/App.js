@@ -1,12 +1,13 @@
 import './tailwind.output.css';
 import ExpenseItemParent from './components/Expenses/ExpenseItemParent';
+import HomeBody from './components/UI/HomeBody';
 
-function App() {
+const App = () => {
 	return (
-		<div>
+		<HomeBody>
 			<ExpenseItemParent />
-		</div>
+		</HomeBody>
 	);
-}
+};
 
 export default App;

@@ -30,8 +30,12 @@ const ExpenseItemParent = (props) => {
 		},
 	];
 
+	const classes = {
+		card: 'm-5 p-5 bg-red-600',
+	};
+
 	return (
-		<Card className='m-5 p-5 bg-red-600'>
+		<Card className={classes.card}>
 			<ExpenseItem
 				title={expenses[0].title}
 				amount={expenses[0].amt}
