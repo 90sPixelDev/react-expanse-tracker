@@ -1,6 +1,6 @@
 import ExpenseDate from './ExpenseDate';
 
-function ExpenseItem(props) {
+const ExpenseItem = (props) => {
 	return (
 		<div className='group bg-red-50 hover:bg-red-100 hover:scale-105 transition-all ease-in-out p-5 rounded-full shadow-lg font-OpenSans m-3'>
 			<div className='ml-5 flex items-center justify-between gap-5'>
@@ -16,6 +16,6 @@ function ExpenseItem(props) {
 			</div>
 		</div>
 	);
-}
+};
 
 export default ExpenseItem;

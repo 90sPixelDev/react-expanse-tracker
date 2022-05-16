@@ -1,4 +1,4 @@
-function ExpenseDate(props) {
+const ExpenseDate = (props) => {
 	const month = props.date.toLocaleString('en-US', { month: 'short' });
 	const day = props.date.toLocaleString('en-US', { day: '2-digit' });
 	const year = props.date.getFullYear();
@@ -10,6 +10,6 @@ function ExpenseDate(props) {
 			<p className='text-base text-center'>{year}</p>
 		</div>
 	);
-}
+};
 
 export default ExpenseDate;

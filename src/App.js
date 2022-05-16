@@ -1,5 +1,5 @@
-import './App.css';
-import ExpenseItemParent from './components/ExpenseItemParent';
+import './tailwind.output.css';
+import ExpenseItemParent from './components/Expenses/ExpenseItemParent';
 
 function App() {
 	return (

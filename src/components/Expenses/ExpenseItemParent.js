@@ -1,7 +1,7 @@
 import ExpenseItem from './ExpenseItem';
-import Card from './Card';
+import Card from '../UI/Card';
 
-function ExpenseItemParent(props) {
+const ExpenseItemParent = (props) => {
 	const expenses = [
 		{
 			title: 'Car Insurance',
@@ -59,6 +59,6 @@ function ExpenseItemParent(props) {
 			/>
 		</Card>
 	);
-}
+};
 
 export default ExpenseItemParent;
