@@ -31,7 +31,7 @@ const ExpenseItemParent = (props) => {
 	];
 
 	const classes = {
-		card: 'm-5 p-5 bg-red-600',
+		card: 'm-5 p-5 bg-red-600 w-[90vw] sm:w-[620px] flex flex-col gap-4',
 	};
 
 	return (
