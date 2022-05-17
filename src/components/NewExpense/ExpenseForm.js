@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
 	const classes = {
 		form: 'bg-red-600 p-5 m-1 flex rounded-full shadow-md',
 		smScreenParent:
 			'w-[30vw] min-w-[150px] flex flex-col justify-center sm:flex-row',
 		controlParent: 'm-auto p-3',
 		label: 'text-white flow-root text-center',
-		input: 'w-full rounded-lg',
+		input: 'w-full rounded-md',
 		amtInput: 'w-[70px] rounded-lg m-auto flow-root',
 		submit: 'bg-red-50 p-3 rounded-full hover:bg-red-100 m-auto flow-root',
 	};
@@ -37,8 +38,15 @@ const ExpenseForm = () => {
 		});
 	};
 
+	const submitHandler = (e) => {
+		e.preventDefault();
+
+		props.onNewExpenseData(userInput);
+		setUserInput({ enteredTitle: '', enteredAmt: '', enteredDate: '' });
+	};
+
 	return (
-		<form className={classes.form}>
+		<form className={classes.form} onSubmit={submitHandler}>
 			<div className={classes.smScreenParent}>
 				<div className={classes.controlParent}>
 					<label className={classes.label}>Title</label>
@@ -46,6 +54,8 @@ const ExpenseForm = () => {
 						className={classes.input}
 						type='text'
 						name='expense-title'
+						required
+						value={userInput.enteredTitle}
 						onChange={titleChangedHandler}
 					/>
 				</div>
@@ -54,9 +64,11 @@ const ExpenseForm = () => {
 					<input
 						className={classes.amtInput}
 						type='number'
-						min='0.1'
-						step='0.1'
+						min='0.01'
+						step='0.01'
 						name='expense-amount'
+						required
+						value={userInput.enteredAmt}
 						onChange={amtChangedHandler}
 					/>
 				</div>
@@ -70,6 +82,8 @@ const ExpenseForm = () => {
 						min='2019-01-01'
 						max='2022-6-1'
 						name='expense-date'
+						required
+						value={userInput.enteredDate}
 						onChange={dateChangedHandler}
 					/>
 				</div>
@@ -81,6 +95,10 @@ const ExpenseForm = () => {
 			</div>
 		</form>
 	);
+};
+
+ExpenseForm.propTypes = {
+	onNewExpenseData: PropTypes.func,
 };
 
 export default ExpenseForm;
