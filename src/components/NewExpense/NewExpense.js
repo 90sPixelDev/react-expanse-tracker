@@ -9,21 +9,21 @@ const NewExpense = (props) => {
 
 	const newExpenseData = (enteredExpenseData) => {
 		const expenseData = {
-			id: `exp-${Math.random() * 3}`,
+			id: `exp-${Math.random() * 1}`,
 			...enteredExpenseData,
 		};
-		props.expenseAdded(expenseData);
+		props.onAddExpense(expenseData);
 	};
 
 	return (
 		<div className={classes.parent}>
-			<ExpenseForm onAddExpense={newExpenseData} />
+			<ExpenseForm onNewExpenseData={newExpenseData} />
 		</div>
 	);
 };
 
 NewExpense.propTypes = {
-	expenseAdded: PropTypes.func,
+	onAddExpense: PropTypes.func,
 };
 
 export default NewExpense;

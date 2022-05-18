@@ -16,33 +16,34 @@ const ExpenseForm = (props) => {
 	// const [enteredAmt, setEnteredAmt] = useState('');
 	// const [enteredDate, setEnteredDate] = useState('');
 
-	const [userInput, setUserInput] = useState({
-		enteredTitle: '',
-		enteredAmt: '',
-		enteredDate: '',
-	});
+	const [enteredTitle, setEnteredTitle] = useState('');
+	const [enteredAmt, setEnteredAmt] = useState('');
+	const [enteredDate, setEnteredDate] = useState('');
 
 	const titleChangedHandler = (e) => {
-		setUserInput((prevState) => {
-			return { ...prevState, enteredTitle: e.target.value };
-		});
+		setEnteredTitle(e.target.value);
 	};
 	const amtChangedHandler = (e) => {
-		setUserInput((prevState) => {
-			return { ...prevState, enteredAmt: e.target.value };
-		});
+		setEnteredAmt(e.target.value);
 	};
 	const dateChangedHandler = (e) => {
-		setUserInput((prevState) => {
-			return { ...prevState, enteredDate: e.target.value };
-		});
+		setEnteredDate(e.target.value);
+		console.log(e.target.value);
 	};
 
 	const submitHandler = (e) => {
 		e.preventDefault();
 
-		props.onNewExpenseData(userInput);
-		setUserInput({ enteredTitle: '', enteredAmt: '', enteredDate: '' });
+		const expenseData = {
+			title: enteredTitle,
+			amt: enteredAmt,
+			date: new Date(enteredDate),
+		};
+
+		props.onNewExpenseData(expenseData);
+		setEnteredTitle('');
+		setEnteredAmt('');
+		setEnteredDate('');
 	};
 
 	return (
@@ -55,7 +56,7 @@ const ExpenseForm = (props) => {
 						type='text'
 						name='expense-title'
 						required
-						value={userInput.enteredTitle}
+						value={enteredTitle}
 						onChange={titleChangedHandler}
 					/>
 				</div>
@@ -68,7 +69,7 @@ const ExpenseForm = (props) => {
 						step='0.01'
 						name='expense-amount'
 						required
-						value={userInput.enteredAmt}
+						value={enteredAmt}
 						onChange={amtChangedHandler}
 					/>
 				</div>
@@ -83,7 +84,7 @@ const ExpenseForm = (props) => {
 						max='2022-6-1'
 						name='expense-date'
 						required
-						value={userInput.enteredDate}
+						value={enteredDate}
 						onChange={dateChangedHandler}
 					/>
 				</div>

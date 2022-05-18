@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const ExpensesFilter = (props) => {
 	const classes = {
-		control: 'mr-3 flex justify-end',
+		control: 'mr-3 flex justify-between',
 		label: 'mr-3 text-white',
 	};
 
@@ -15,10 +15,7 @@ const ExpensesFilter = (props) => {
 	return (
 		<div className={classes.control}>
 			<label className={classes.label}>Filter by Year:</label>
-			<select
-				onChange={onFilterSelectedHandler}
-				value={props.selected}
-			>
+			<select onChange={onFilterSelectedHandler} value={props.year}>
 				<option value='2022'>2022</option>
 				<option value='2021'>2021</option>
 				<option value='2020'>2020</option>
@@ -29,7 +26,7 @@ const ExpensesFilter = (props) => {
 };
 
 ExpensesFilter.propTypes = {
-	selected: PropTypes.number,
+	year: PropTypes.number,
 	onFilterChanged: PropTypes.func,
 };
 

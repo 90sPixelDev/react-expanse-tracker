@@ -5,7 +5,7 @@ import HomeBody from './components/UI/HomeBody';
 import NewExpense from './components/NewExpense/NewExpense';
 
 const App = () => {
-	const [expenses, setExpenses] = useState([
+	const initExpenses = [
 		{
 			id: `exp-${Math.random() * 3}`,
 			title: 'Car Insurance',
@@ -36,21 +36,21 @@ const App = () => {
 			date: new Date(2021, 2, 15),
 			amt: 289.56,
 		},
-	]);
+	];
+
+	const [expenses, setExpenses] = useState(initExpenses);
 
 	const addExpenseHandler = (createdExpense) => {
 		console.log(createdExpense);
-		const newExpense = {
-			id: createdExpense.id,
-			title: createdExpense.enteredTitle,
-			amt: createdExpense.enteredAmt,
-			date: createdExpense.enteredDate,
-		};
+		// const newExpense = {
+		// 	id: createdExpense.id,
+		// 	title: createdExpense.enteredTitle,
+		// 	amt: createdExpense.enteredAmt,
+		// 	date: createdExpense.enteredDate,
+		// };
 		setExpenses((prevState) => {
-			prevState.push(newExpense);
-			return prevState;
+			return [...prevState, createdExpense];
 		});
-		console.log(expenses);
 	};
 
 	return (
