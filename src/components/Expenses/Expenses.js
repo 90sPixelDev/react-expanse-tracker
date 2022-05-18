@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ExpenseItem from './ExpenseItem';
 import PropTypes from 'prop-types';
 import Card from '../UI/Card';
@@ -9,22 +9,24 @@ const Expenses = (props) => {
 		card: 'm-5 p-5 bg-red-600 w-[90vw] sm:w-[620px] flex flex-col gap-4',
 	};
 
-	// const expenseItems = [];
-	// for (let i = 0; i < props.items.length; i++) {
-	// 	expenseItems.push(
-	// 		<ExpenseItem
-	// 			key={props.items[i].id}
-	// 			title={props.items[i].title}
-	// 			amount={props.items[i].amt}
-	// 			date={props.items[i].date}
-	// 		/>
-	// 	);
-	// }
+	const [filterYear, setFilterYear] = useState(2022);
+
+	const filterHandler = (yearSelected) => {
+		console.log('Year xfer: ' + yearSelected);
+		setFilterYear(yearSelected);
+	};
+
+	useEffect(() => {
+		console.log(filterYear);
+	}, [filterYear]);
 
 	return (
 		<div>
-			<ExpenseFilter />
 			<Card className={classes.card}>
+				<ExpenseFilter
+					onFilterChanged={filterHandler}
+					selected={filterYear}
+				/>
 				<ExpenseItem
 					key={props.items[0].id}
 					title={props.items[0].title}
