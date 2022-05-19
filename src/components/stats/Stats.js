@@ -12,8 +12,7 @@ const Stats = (props) => {
 
 	let sum = 0;
 	const [total, setTotal] = useState(0);
-	// let selectedYear = 'All';
-	// let selectedMonth = 'All';
+
 	const [selectedStatFilter, setSelectedStatFilter] = useState({
 		month: 'All',
 		year: 'All',
