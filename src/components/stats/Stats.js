@@ -15,13 +15,10 @@ const Stats = (props) => {
 
 	const yearSpendFilterHandler = (e) => {
 		setTotal(0);
-		console.log(e.target.value);
 		props.data.forEach((expense) => {
-			console.log(expense.date.getFullYear());
 			if (expense.date.getFullYear() === parseInt(e.target.value)) {
 				sum += expense.amt;
 				setTotal(sum.toFixed(2));
-				console.log('Total: ' + sum);
 			}
 		});
 	};

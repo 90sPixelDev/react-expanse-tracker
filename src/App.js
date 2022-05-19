@@ -16,19 +16,19 @@ const App = () => {
 		{
 			id: `exp-${Math.random() * 3}`,
 			title: 'Mortgage',
-			date: new Date(2021, 5, 8),
+			date: new Date(2022, 5, 8),
 			amt: 980.45,
 		},
 		{
 			id: `exp-${Math.random() * 3}`,
 			title: 'Cat Food',
-			date: new Date(2021, 10, 16),
+			date: new Date(2019, 10, 16),
 			amt: 45.33,
 		},
 		{
 			id: `exp-${Math.random() * 3}`,
 			title: 'Cat Litter',
-			date: new Date(2021, 7, 4),
+			date: new Date(2020, 7, 4),
 			amt: 21.74,
 		},
 		{

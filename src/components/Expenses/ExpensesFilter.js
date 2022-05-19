@@ -16,6 +16,7 @@ const ExpensesFilter = (props) => {
 		<div className={classes.control}>
 			<label className={classes.label}>Filter by Year:</label>
 			<select onChange={onFilterSelectedHandler} value={props.year}>
+				<option value='All'>All</option>
 				<option value='2022'>2022</option>
 				<option value='2021'>2021</option>
 				<option value='2020'>2020</option>
@@ -26,7 +27,7 @@ const ExpensesFilter = (props) => {
 };
 
 ExpensesFilter.propTypes = {
-	year: PropTypes.number,
+	year: PropTypes.string,
 	onFilterChanged: PropTypes.func,
 };
 
