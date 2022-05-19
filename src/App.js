@@ -3,6 +3,7 @@ import './tailwind.css';
 import Expenses from './components/Expenses/Expenses';
 import HomeBody from './components/UI/HomeBody';
 import NewExpense from './components/NewExpense/NewExpense';
+import Stats from './components/stats/Stats';
 
 const App = () => {
 	const initExpenses = [
@@ -42,19 +43,14 @@ const App = () => {
 
 	const addExpenseHandler = (createdExpense) => {
 		console.log(createdExpense);
-		// const newExpense = {
-		// 	id: createdExpense.id,
-		// 	title: createdExpense.enteredTitle,
-		// 	amt: createdExpense.enteredAmt,
-		// 	date: createdExpense.enteredDate,
-		// };
 		setExpenses((prevState) => {
-			return [...prevState, createdExpense];
+			return [createdExpense, ...prevState];
 		});
 	};
 
 	return (
 		<HomeBody>
+			<Stats data={expenses}></Stats>
 			<NewExpense onAddExpense={addExpenseHandler} />
 			<Expenses items={expenses} />
 		</HomeBody>

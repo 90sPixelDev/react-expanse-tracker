@@ -24,7 +24,7 @@ const ExpenseForm = (props) => {
 		setEnteredTitle(e.target.value);
 	};
 	const amtChangedHandler = (e) => {
-		setEnteredAmt(e.target.value);
+		setEnteredAmt(parseFloat(e.target.value));
 	};
 	const dateChangedHandler = (e) => {
 		setEnteredDate(e.target.value);

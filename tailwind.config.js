@@ -7,6 +7,9 @@ module.exports = {
 			fontFamily: {
 				OpenSans: ['Open Sans', 'sans-serif'],
 			},
+			gridTemplateRows: {
+				layout: '15vh, 15vh, 70vh',
+			},
 		},
 		screens: {
 			'xsm': '420px',

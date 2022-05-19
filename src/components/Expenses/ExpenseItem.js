@@ -7,7 +7,7 @@ const ExpenseItem = (props) => {
 
 	const classes = {
 		expenseParent:
-			'w-full group bg-red-50 hover:bg-red-100 hover:scale-105 transition-all ease-in-out p-5 rounded-full shadow-lg font-OpenSans m-auto',
+			'w-full group bg-red-50 hover:bg-red-100 hover:scale-105 sm:hover:shadow-red-900 shadow-lg transition-all ease-in-out p-5 rounded-full font-OpenSans m-auto',
 		spacing: 'flex items-center justify-between',
 		flexLayout: 'inline-flex w-100',
 		expenseTitle:
