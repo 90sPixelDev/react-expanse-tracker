@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 const Stats = (props) => {
@@ -12,16 +12,103 @@ const Stats = (props) => {
 
 	let sum = 0;
 	const [total, setTotal] = useState(0);
+	// let selectedYear = 'All';
+	// let selectedMonth = 'All';
+	const [selectedStatFilter, setSelectedStatFilter] = useState({
+		month: 'All',
+		year: 'All',
+	});
 
 	const yearSpendFilterHandler = (e) => {
 		setTotal(0);
-		props.data.forEach((expense) => {
-			if (expense.date.getFullYear() === parseInt(e.target.value)) {
+		setSelectedStatFilter((prevState) => ({
+			month: prevState.month,
+			year: e.target.value,
+		}));
+		if (e.target.value === 'All' && selectedStatFilter.month === 'All') {
+			console.log('All years all months!');
+			props.data.forEach((expense) => {
 				sum += expense.amt;
 				setTotal(sum.toFixed(2));
-			}
-		});
+			});
+		} else if (
+			e.target.value !== 'All' &&
+			selectedStatFilter.month === 'All'
+		) {
+			console.log('One year all months!');
+			props.data.forEach((expense) => {
+				if (
+					expense.date.getFullYear() === parseInt(e.target.value)
+				) {
+					sum += expense.amt;
+					setTotal(sum.toFixed(2));
+				}
+			});
+		} else if (e.target.value != 'All') {
+			console.log('One year one month!');
+			props.data.forEach((expense) => {
+				if (
+					expense.date.toLocaleString('en-US', {
+						month: 'short',
+					}) === selectedStatFilter.month &&
+					expense.date.getFullYear() === parseInt(e.target.value)
+				) {
+					sum += expense.amt;
+					setTotal(sum.toFixed(2));
+				}
+			});
+		}
 	};
+
+	const monthSpendFilterHandler = (e) => {
+		setTotal(0);
+		setSelectedStatFilter((prevState) => ({
+			month: e.target.value,
+			year: prevState.year,
+		}));
+		updateStats(e);
+	};
+
+	const updateStats = (e) => {
+		if (e.target.value === 'All' && selectedStatFilter.year === 'All') {
+			console.log('All months all years!');
+			props.data.forEach((expense) => {
+				sum += expense.amt;
+				setTotal(sum.toFixed(2));
+			});
+		} else if (
+			e.target.value !== 'All' &&
+			selectedStatFilter.year === 'All'
+		) {
+			console.log('One month all years!');
+			props.data.forEach((expense) => {
+				if (
+					expense.date.toLocaleString('en-US', {
+						month: 'short',
+					}) === e.target.value
+				) {
+					sum += expense.amt;
+					setTotal(sum.toFixed(2));
+				}
+			});
+		} else if (selectedStatFilter.year != 'All') {
+			console.log('One month one year!');
+			props.data.forEach((expense) => {
+				if (
+					expense.date.toLocaleString('en-US', {
+						month: 'short',
+					}) === e.target.value &&
+					expense.date.getFullYear() ===
+						parseInt(selectedStatFilter.year)
+				) {
+					sum += expense.amt;
+					setTotal(sum.toFixed(2));
+				}
+			});
+		}
+	};
+
+	// useEffect(selectedStatFilter);
 
 	return (
 		<section className={classes.wholeSection}>
@@ -30,7 +117,9 @@ const Stats = (props) => {
 				<select
 					className={classes.select}
 					onChange={yearSpendFilterHandler}
+					value={selectedStatFilter.year}
 				>
+					<option>All</option>
 					<option>2022</option>
 					<option>2021</option>
 					<option>2020</option>
@@ -39,7 +128,11 @@ const Stats = (props) => {
 			</div>
 			<div className={classes.miniRow}>
 				<label className={classes.statTitle}>Month:</label>
-				<select className={classes.select}>
+				<select
+					className={classes.select}
+					onChange={monthSpendFilterHandler}
+					value={selectedStatFilter.month}
+				>
 					<option>All</option>
 					<option>Jan</option>
 					<option>Feb</option>

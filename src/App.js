@@ -27,6 +27,12 @@ const App = () => {
 		},
 		{
 			id: `exp-${Math.random() * 3}`,
+			title: 'Book',
+			date: new Date(2022, 10, 20),
+			amt: 70.53,
+		},
+		{
+			id: `exp-${Math.random() * 3}`,
 			title: 'Cat Litter',
 			date: new Date(2020, 7, 4),
 			amt: 21.74,

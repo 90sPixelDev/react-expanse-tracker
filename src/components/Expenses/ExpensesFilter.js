@@ -8,7 +8,6 @@ const ExpensesFilter = (props) => {
 	};
 
 	const onFilterSelectedHandler = (e) => {
-		console.log('Year slelected: ' + e.target.value);
 		props.onFilterChanged(e.target.value);
 	};
 

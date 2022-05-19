@@ -9,9 +9,7 @@ const Expenses = (props) => {
 		card: 'm-5 p-5 bg-red-600 w-[90vw] sm:w-[620px] flex flex-col gap-4 self-start',
 	};
 
-	const [filteredYear, setFilteredYear] = useState('2022');
-
-	console.log(filteredYear);
+	const [filteredYear, setFilteredYear] = useState('All');
 
 	const filterHandler = (yearSelected) => {
 		setFilteredYear(yearSelected);
