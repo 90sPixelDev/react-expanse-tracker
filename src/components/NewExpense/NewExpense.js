@@ -15,9 +15,16 @@ const NewExpense = (props) => {
 		props.onAddExpense(expenseData);
 	};
 
+	const animPass = (parent) => {
+		console.log('Test');
+	};
+
 	return (
 		<div className={classes.parent}>
-			<ExpenseForm onNewExpenseData={newExpenseData} />
+			<ExpenseForm
+				onNewExpenseData={newExpenseData}
+				onAdded={animPass}
+			/>
 		</div>
 	);
 };

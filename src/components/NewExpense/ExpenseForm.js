@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 const ExpenseForm = (props) => {
 	const classes = {
 		form: 'bg-red-600 p-5 m-1 flex rounded-full shadow-md',
 		smScreenParent:
-			'w-[30vw] min-w-[150px] flex flex-col justify-center sm:flex-row',
+			'w-[30vw] min-w-[150px] max-w-[300px] flex flex-col justify-center sm:flex-row',
 		controlParent: 'm-auto p-3',
 		label: 'text-white flow-root text-center',
 		input: 'w-full rounded-md',
 		amtInput: 'w-[70px] rounded-lg m-auto flow-root',
-		submit: 'bg-red-50 p-3 rounded-full hover:bg-red-100 m-auto flow-root',
+		submit: 'bg-red-50 p-3 rounded-lg hover:bg-red-100 m-auto flow-root',
 	};
-	// const [enteredTitle, setEnteredTitle] = useState('');
-	// const [enteredAmt, setEnteredAmt] = useState('');
-	// const [enteredDate, setEnteredDate] = useState('');
 
 	const [enteredTitle, setEnteredTitle] = useState('');
 	const [enteredAmt, setEnteredAmt] = useState('');
@@ -100,6 +98,7 @@ const ExpenseForm = (props) => {
 
 ExpenseForm.propTypes = {
 	onNewExpenseData: PropTypes.func,
+	onAdded: PropTypes.func,
 };
 
 export default ExpenseForm;
