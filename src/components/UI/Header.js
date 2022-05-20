@@ -5,7 +5,7 @@ const Header = () => {
 		header: 'w-full h-full bg-red-900',
 		menu: 'h-full',
 		listParent: 'flex h-full justify-evenly items-center',
-		listItem: 'text-white',
+		listItem: 'text-white w-[33%] text-center',
 	};
 
 	return (
