@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Stats = (props) => {
 	const classes = {
-		wholeSection: 'bg-red-100 w-[25vw] grid p-3',
+		wholeSection: 'bg-red-300 w-[25vw] min-w-[200px] grid p-3',
 		miniRow: 'h-[3vh] min-h-[15px] flex justify-between',
 		statTitle: 'flow-root my-auto font-bold',
 		select: 'my-auto h-[1.5em]',
