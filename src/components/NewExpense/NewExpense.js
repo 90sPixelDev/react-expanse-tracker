@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import ExpenseForm from './ExpenseForm';
 import PropTypes from 'prop-types';
-import { useAutoAnimate } from '@formkit/auto-animate/react';
 import autoAnimate from '@formkit/auto-animate';
 
 const NewExpense = (props) => {

@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
+import autoAnimate from '@formkit/auto-animate';
 
 const Stats = (props) => {
 	const classes = {
