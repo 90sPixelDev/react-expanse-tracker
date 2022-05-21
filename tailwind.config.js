@@ -8,7 +8,7 @@ module.exports = {
 				OpenSans: ['Open Sans', 'sans-serif'],
 			},
 			gridTemplateRows: {
-				layout: '5vh 15vh, 20vh, 60vh',
+				layout: '5vh, 23vh, 12vh, 60vh',
 			},
 		},
 		screens: {

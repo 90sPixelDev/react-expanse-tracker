@@ -58,8 +58,8 @@ const App = () => {
 	return (
 		<HomeBody>
 			<Header />
-			<Stats data={expenses}></Stats>
 			<NewExpense onAddExpense={addExpenseHandler} />
+			<Stats data={expenses}></Stats>
 			<Expenses items={expenses} />
 		</HomeBody>
 	);

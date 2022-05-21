@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import autoAnimate from '@formkit/auto-animate';
+import Chart from '../Chart/Chart';
 
 const Stats = (props) => {
 	const classes = {
@@ -153,6 +153,7 @@ const Stats = (props) => {
 				<p className={classes.statTitle}>Total Spent: </p>
 				<span className={classes.amt}>${total}</span>
 			</div>
+			<Chart />
 		</section>
 	);
 };
