@@ -10,9 +10,13 @@ const ExpensesPageControl = () => {
 
 	return (
 		<div className={classes.control}>
-			<button className={classes.button}>Prev</button>
+			<button className={classes.button} type='button'>
+				Prev
+			</button>
 			<p className={classes.page}>Page: 1</p>
-			<button className={classes.button}>Next</button>
+			<button className={classes.button} type='button'>
+				Next
+			</button>
 		</div>
 	);
 };

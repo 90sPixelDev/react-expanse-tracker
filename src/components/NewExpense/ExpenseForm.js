@@ -4,14 +4,17 @@ import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 const ExpenseForm = (props) => {
 	const classes = {
-		form: 'bg-red-600 p-5 m-1 flex rounded-full shadow-md',
-		smScreenParent:
-			'w-[30vw] min-w-[150px] max-w-[300px] flex flex-col justify-center sm:flex-row',
-		controlParent: 'm-auto p-3',
-		label: 'text-white flow-root text-center',
-		input: 'w-full rounded-md',
-		amtInput: 'w-[70px] rounded-lg m-auto flow-root',
-		submit: 'bg-red-50 p-3 rounded-lg hover:bg-red-100 m-auto flow-root',
+		form: 'max-w-[500px] p-1 sm:p-5 m-auto flex flex-col rounded-3xl',
+		container: 'flex flex-col',
+		smScreenParent: 'w-full min-w-[300px] flex flex-row justify-center',
+		controlParent: 'm-auto sm:p-1',
+		label: 'text-white flow-root text-center text-sm sm:text-base',
+		input: 'w-[5em] sm:w-[8em] rounded-md',
+		amtInput: 'w-[5em] sm:w-[8em] rounded-lg m-auto flow-root',
+		buttons: 'flex flex-row my-2',
+		new: 'bg-white sm:hover:bg-gray-200 p-1 rounded-lg m-auto sm:p-2',
+		submit: 'bg-green-200 sm:hover:bg-green-400 p-1 rounded-lg m-auto sm:p-2',
+		cancel: 'bg-red-200 sm:hover:bg-red-400 p-1 rounded-lg m-auto sm:p-2',
 	};
 
 	const [enteredTitle, setEnteredTitle] = useState('');
@@ -46,49 +49,67 @@ const ExpenseForm = (props) => {
 
 	return (
 		<form className={classes.form} onSubmit={submitHandler}>
-			<div className={classes.smScreenParent}>
-				<div className={classes.controlParent}>
-					<label className={classes.label}>Title</label>
-					<input
-						className={classes.input}
-						type='text'
-						name='expense-title'
-						required
-						value={enteredTitle}
-						onChange={titleChangedHandler}
-					/>
+			<div className={classes.container}>
+				<div className={classes.smScreenParent}>
+					<div className={classes.controlParent}>
+						<label className={classes.label}>Title</label>
+						<input
+							className={classes.input}
+							type='text'
+							name='expense-title'
+							required
+							value={enteredTitle}
+							onChange={titleChangedHandler}
+						/>
+					</div>
+					<div className={classes.controlParent}>
+						<label className={classes.label}>Amount</label>
+						<input
+							className={classes.amtInput}
+							type='number'
+							min='0.01'
+							step='0.01'
+							name='expense-amount'
+							required
+							value={enteredAmt}
+							onChange={amtChangedHandler}
+						/>
+					</div>
 				</div>
-				<div className={classes.controlParent}>
-					<label className={classes.label}>Amount</label>
-					<input
-						className={classes.amtInput}
-						type='number'
-						min='0.01'
-						step='0.01'
-						name='expense-amount'
-						required
-						value={enteredAmt}
-						onChange={amtChangedHandler}
-					/>
+				<div className={classes.smScreenParent}>
+					<div className={classes.controlParent}>
+						<label className={classes.label}>Date</label>
+						<input
+							className={classes.input}
+							type='date'
+							min='2019-01-01'
+							max='2022-6-1'
+							name='expense-date'
+							required
+							value={enteredDate}
+							onChange={dateChangedHandler}
+						/>
+					</div>
+					<div className={classes.controlParent}>
+						<label className={classes.label}>Category</label>
+						<input
+							className={classes.input}
+							type='text'
+							name='expense-cat'
+							required
+						/>
+					</div>
 				</div>
-			</div>
-			<div className={classes.smScreenParent}>
-				<div className={classes.controlParent}>
-					<label className={classes.label}>Date</label>
-					<input
-						className={classes.input}
-						type='date'
-						min='2019-01-01'
-						max='2022-6-1'
-						name='expense-date'
-						required
-						value={enteredDate}
-						onChange={dateChangedHandler}
-					/>
-				</div>
-				<div className={classes.controlParent}>
+				<div className={classes.buttons}>
+					<button
+						className={classes.cancel}
+						type='button'
+						onClick={props.revealFormHandler}
+					>
+						Cancel
+					</button>
 					<button className={classes.submit} type='submit'>
-						Add
+						Add Expense
 					</button>
 				</div>
 			</div>
@@ -99,6 +120,7 @@ const ExpenseForm = (props) => {
 ExpenseForm.propTypes = {
 	onNewExpenseData: PropTypes.func,
 	onAdded: PropTypes.func,
+	revealFormHandler: PropTypes.func,
 };
 
 export default ExpenseForm;

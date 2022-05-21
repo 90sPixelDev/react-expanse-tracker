@@ -55,7 +55,7 @@ const ExpenseItem = (props) => {
 	};
 
 	return (
-		<div className={classes.expenseParent}>
+		<li className={classes.expenseParent}>
 			<div className={classes.spacing}>
 				<div className={classes.flexLayout}>
 					<ExpenseDate date={props.date} />
@@ -72,7 +72,7 @@ const ExpenseItem = (props) => {
 					</p>
 				</div>
 			</div>
-		</div>
+		</li>
 	);
 };
 
