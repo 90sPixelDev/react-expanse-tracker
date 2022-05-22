@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Chart from '../Chart/Chart';
+import ExpensesChart from '../Chart/ExpensesChart';
 
 const Stats = (props) => {
 	const classes = {
 		wholeSection:
-			'bg-red-600 w-[25vw] min-w-[200px] max-w-[300px] grid p-3 rounded-lg',
-		miniRow: 'h-[3vh] min-h-[15px] flex justify-between',
+			'bg-red-600 w-[80vw] min-w-[200px] min-h-[150px] max-w-[620px] flex flex-col sm:flex-row gap-2 p-3 rounded-lg overflow-y-auto',
+		subSection: 'min-w-[200px]',
+		miniRow: 'h-[35px] min-h-[15px] flex justify-between',
 		statTitle: 'flow-root my-auto text-white',
 		select: 'my-auto h-[1.5em] w-[3em]',
 		amt: 'my-auto text-white',
@@ -109,51 +110,60 @@ const Stats = (props) => {
 		}
 	};
 
-	// useEffect(selectedStatFilter);
+	const filteredExpenses = props.data.filter((expense) => {
+		if (selectedStatFilter.year === 'All') return expense;
+		else
+			return (
+				expense.date.getFullYear().toString() ===
+				selectedStatFilter.year
+			);
+	});
 
 	return (
 		<section className={classes.wholeSection}>
-			<div className={classes.miniRow}>
-				<label className={classes.statTitle}>Year:</label>
-				<select
-					className={classes.select}
-					onChange={yearSpendFilterHandler}
-					value={selectedStatFilter.year}
-				>
-					<option>All</option>
-					<option>2022</option>
-					<option>2021</option>
-					<option>2020</option>
-					<option>2019</option>
-				</select>
+			<div className={classes.subSection}>
+				<div className={classes.miniRow}>
+					<label className={classes.statTitle}>Year:</label>
+					<select
+						className={classes.select}
+						onChange={yearSpendFilterHandler}
+						value={selectedStatFilter.year}
+					>
+						<option>All</option>
+						<option>2022</option>
+						<option>2021</option>
+						<option>2020</option>
+						<option>2019</option>
+					</select>
+				</div>
+				<div className={classes.miniRow}>
+					<label className={classes.statTitle}>Month:</label>
+					<select
+						className={classes.select}
+						onChange={monthSpendFilterHandler}
+						value={selectedStatFilter.month}
+					>
+						<option>All</option>
+						<option>Jan</option>
+						<option>Feb</option>
+						<option>Mar</option>
+						<option>Apr</option>
+						<option>May</option>
+						<option>Jun</option>
+						<option>Jul</option>
+						<option>Aug</option>
+						<option>Sep</option>
+						<option>Oct</option>
+						<option>Nov</option>
+						<option>Dec</option>
+					</select>
+				</div>
+				<div className={classes.miniRow}>
+					<p className={classes.statTitle}>Total Spent: </p>
+					<span className={classes.amt}>${total}</span>
+				</div>
 			</div>
-			<div className={classes.miniRow}>
-				<label className={classes.statTitle}>Month:</label>
-				<select
-					className={classes.select}
-					onChange={monthSpendFilterHandler}
-					value={selectedStatFilter.month}
-				>
-					<option>All</option>
-					<option>Jan</option>
-					<option>Feb</option>
-					<option>Mar</option>
-					<option>Apr</option>
-					<option>May</option>
-					<option>Jun</option>
-					<option>Jul</option>
-					<option>Aug</option>
-					<option>Sep</option>
-					<option>Oct</option>
-					<option>Nov</option>
-					<option>Dec</option>
-				</select>
-			</div>
-			<div className={classes.miniRow}>
-				<p className={classes.statTitle}>Total Spent: </p>
-				<span className={classes.amt}>${total}</span>
-			</div>
-			<Chart />
+			<ExpensesChart expenses={filteredExpenses} />
 		</section>
 	);
 };

@@ -5,8 +5,8 @@ import autoAnimate from '@formkit/auto-animate';
 
 const NewExpense = (props) => {
 	const classes = {
-		section: 'max-w-[500px] min-w-[250px] h-full',
-		sectionNew: 'h-[90%] w-[90%] bg-red-600 rounded-3xl',
+		sectionNew:
+			'my-2 h-[90%] w-[90%] max-w-[450px] bg-red-600 rounded-3xl',
 		parent: 'w-full w-full h-full grid place-items-center rounded-3xl',
 		button: 'bg-white sm:hover:bg-gray-200 rounded-lg w-max h-max py-1 px-2',
 	};

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const HomeBody = (props) => {
 	const classes = {
 		homeBody:
-			'absolute min-h-full h-fit w-full bg-red-50 grid grid-rows-layout place-items-center bg-gradient-to-t from-red-300 to-red-50',
+			'absolute h-fit w-full grid grid-rows-layout sm:grid-rows-smLayout gap-5 place-items-center',
 	};
 	return <section className={classes.homeBody}>{props.children}</section>;
 };

@@ -5,16 +5,16 @@ const Header = () => {
 		header: 'w-full h-full bg-red-900',
 		menu: 'h-full',
 		listParent: 'flex h-full justify-evenly items-center',
-		listItem: 'text-white w-[33%] text-center',
+		listItem: 'text-white w-[33%] text-center py-3',
 	};
 
 	return (
 		<header className={classes.header}>
 			<nav className={classes.menu}>
 				<ul className={classes.listParent}>
-					<li className={classes.listItem}>Home</li>
-					<li className={classes.listItem}>Expenses</li>
-					<li className={classes.listItem}>About</li>
+					<li className={classes.listItem}>Mini</li>
+					<li className={classes.listItem}>Expense</li>
+					<li className={classes.listItem}>Tracker</li>
 				</ul>
 			</nav>
 		</header>

@@ -5,6 +5,7 @@ import HomeBody from './components/UI/HomeBody';
 import NewExpense from './components/NewExpense/NewExpense';
 import Stats from './components/stats/Stats';
 import Header from './components/UI/Header';
+import Footer from './components/UI/Footer';
 
 const App = () => {
 	const initExpenses = [
@@ -61,6 +62,7 @@ const App = () => {
 			<NewExpense onAddExpense={addExpenseHandler} />
 			<Stats data={expenses}></Stats>
 			<Expenses items={expenses} />
+			<Footer />
 		</HomeBody>
 	);
 };

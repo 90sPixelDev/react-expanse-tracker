@@ -4,8 +4,8 @@ import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 const ExpenseForm = (props) => {
 	const classes = {
-		form: 'max-w-[500px] p-1 sm:p-5 m-auto flex flex-col rounded-3xl',
-		container: 'flex flex-col',
+		form: 'max-w-[500px] h-full p-1 sm:p-5 m-auto grid place-items-center rounded-3xl',
+		container: 'flex flex-col h-full justify-evenly',
 		smScreenParent: 'w-full min-w-[300px] flex flex-row justify-center',
 		controlParent: 'm-auto sm:p-1',
 		label: 'text-white flow-root text-center text-sm sm:text-base',

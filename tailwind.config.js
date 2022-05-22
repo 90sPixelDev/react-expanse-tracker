@@ -8,7 +8,8 @@ module.exports = {
 				OpenSans: ['Open Sans', 'sans-serif'],
 			},
 			gridTemplateRows: {
-				layout: '5vh, 23vh, 12vh, 60vh',
+				layout: '50px, minmax(min-content, fit-content), minmax(min-content, fit-content), minmax(500px, auto-fill)',
+				stats: '1fr 3.5fr',
 			},
 		},
 		screens: {
