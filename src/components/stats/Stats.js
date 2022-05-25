@@ -6,7 +6,7 @@ const Stats = (props) => {
 	const classes = {
 		wholeSection:
 			'bg-red-600 w-[80vw] min-w-[200px] min-h-[150px] max-w-[620px] flex flex-col sm:flex-row gap-2 p-3 rounded-lg overflow-y-auto',
-		subSection: 'min-w-[200px]',
+		subSection: 'min-w-[200px] sm:mr-2',
 		miniRow: 'h-[35px] min-h-[15px] flex justify-between',
 		statTitle: 'flow-root my-auto text-white',
 		select: 'my-auto h-[1.5em] w-[3em]',

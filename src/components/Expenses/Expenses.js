@@ -7,7 +7,7 @@ import ExpensesList from './ExpensesList';
 
 const Expenses = (props) => {
 	const classes = {
-		card: 'bottom-4 mx-5 mb-5 bg-red-600 w-[90vw] sm:w-[620px] flex flex-col self-start min-h-[50vh] transition',
+		card: 'bottom-4 mx-5 bg-red-600 w-[90vw] sm:w-[620px] flex flex-col self-start min-h-[30vh] transition',
 		topBottom:
 			'w-full bg-gradient-to-r from-transparent via-red-400 to-transparent py-1',
 	};
