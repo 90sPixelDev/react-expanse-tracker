@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Card from '../UI/Card';
 import ExpenseFilter from './ExpensesFilter';
-import ExpensesPageControl from './ExpensesPageControl';
+import ExpensesBottom from './ExpensesBottom';
 import ExpensesList from './ExpensesList';
 
 const Expenses = (props) => {
@@ -33,7 +33,7 @@ const Expenses = (props) => {
 			</div>
 			<ExpensesList items={filteredExpenses} />
 			<div className={classes.topBottom}>
-				<ExpensesPageControl />
+				<ExpensesBottom />
 			</div>
 		</Card>
 	);

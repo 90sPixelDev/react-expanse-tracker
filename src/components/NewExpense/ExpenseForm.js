@@ -9,7 +9,7 @@ const ExpenseForm = (props) => {
 		smScreenParent: 'w-full min-w-[300px] flex flex-row justify-center',
 		controlParent: 'm-auto sm:p-1',
 		label: 'text-white flow-root text-center text-sm sm:text-base',
-		input: 'w-[5em] sm:w-[8em] rounded-md',
+		input: 'w-[5em] sm:w-[8em] rounded-md p-1',
 		amtInput: 'w-[5em] sm:w-[8em] rounded-lg m-auto flow-root',
 		buttons: 'flex flex-row my-2',
 		new: 'bg-white sm:hover:bg-gray-200 p-1 rounded-lg m-auto sm:p-2',
@@ -83,8 +83,9 @@ const ExpenseForm = (props) => {
 							className={classes.input}
 							type='date'
 							min='2019-01-01'
-							max='2022-6-1'
+							max='2022-06-01'
 							name='expense-date'
+							defaultValue='today'
 							required
 							value={enteredDate}
 							onChange={dateChangedHandler}
