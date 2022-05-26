@@ -6,6 +6,7 @@ const Footer = () => {
 		content: 'm-auto',
 		row: 'flex flex-row justify-center',
 		text: 'text-white mx-auto text-center mx-2 text-sm',
+		links: 'text-white mx-auto text-center mx-2 text-sm underline decoration-solid',
 	};
 
 	return (
@@ -13,7 +14,7 @@ const Footer = () => {
 			<div className={classes.content}>
 				<div className={classes.row}>
 					<a
-						className={classes.text}
+						className={classes.links}
 						href='http://lienfont.dev'
 						target='_blank'
 						rel='noreferrer'
@@ -22,7 +23,7 @@ const Footer = () => {
 					</a>
 					<p className={classes.text}>|</p>
 					<a
-						className={classes.text}
+						className={classes.links}
 						href='https://github.com/90sPixelDev'
 						target='_blank'
 						rel='noreferrer'

@@ -17,54 +17,12 @@ const ExpenseItem = (props) => {
 		expenseAmtText: 'text-[4vw] xsm:text-xl',
 	};
 
-	const changeTitleHandler = (props) => {
-		const arr = [
-			'a',
-			'b',
-			'c',
-			'd',
-			'e',
-			'f',
-			'g',
-			'h',
-			'i',
-			'j',
-			'k',
-			'l',
-			'm',
-			'n',
-			'o',
-			'p',
-			'q',
-			'r',
-			's',
-			't',
-			'u',
-			'v',
-			'w',
-			'x',
-			'y',
-			'z',
-		];
-
-		let randomLetters = '';
-		for (let i = 0; i < 6; i++) {
-			randomLetters += arr[Math.floor(Math.random() * 26)];
-			setTitle(randomLetters);
-		}
-	};
-
 	return (
 		<li className={classes.expenseParent}>
 			<div className={classes.spacing}>
 				<div className={classes.flexLayout}>
 					<ExpenseDate date={props.date} />
-					<button
-						className={classes.expenseTitle}
-						onClick={changeTitleHandler}
-					>
-						{title}
-					</button>
+					<p className={classes.expenseTitle}>{title}</p>
 				</div>
 				<div className={classes.expenseAmt}>
 					<p className={classes.expenseAmtText}>
