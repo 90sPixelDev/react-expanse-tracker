@@ -46,6 +46,17 @@ const Stats = (props) => {
 					setTotal(sum.toFixed(2));
 				}
 			});
+		} else if (e.target.value === 'All' && selectedStatFilter.month) {
+			props.data.forEach((expense) => {
+				if (
+					expense.date.toLocaleString('en-US', {
+						month: 'short',
+					}) === selectedStatFilter.month
+				) {
+					sum += expense.amt;
+					setTotal(sum.toFixed(2));
+				}
+			});
 		} else if (e.target.value != 'All') {
 			console.log('One year one month!');
 			props.data.forEach((expense) => {
