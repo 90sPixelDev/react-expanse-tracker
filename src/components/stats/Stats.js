@@ -109,11 +109,22 @@ const Stats = (props) => {
 					setTotal(sum.toFixed(2));
 				}
 			});
-		} else if () {
-			console.log('One month all')
-		}
-		
-		else if (
+		} else if (
+			e.target.value !== 'All' &&
+			selectedStatFilter.year === 'All'
+		) {
+			console.log('One month all years!');
+			props.data.forEach((expense) => {
+				if (
+					expense.date.toLocaleString('en-US', {
+						month: 'short',
+					})
+				) {
+					sum += expense.amt;
+					setTotal(sum.toFixed(2));
+				}
+			});
+		} else if (
 			selectedStatFilter.year != 'All' &&
 			e.target.value === 'All'
 		) {

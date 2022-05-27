@@ -5,10 +5,11 @@ import PropTypes from 'prop-types';
 const classes = {
 	backdrop:
 		'fixed z-10 top-0 left-0 flex flex-row place-items-center place-content-center bg-gray-800 bg-opacity-50 w-[100vw] h-[100vh]',
-	container: 'absolute sm:w-[20vw] sm:h-[10vh] p-4 bg-white rounded-lg',
-	title: 'm-auto mb-1 text-lg font-bold text-center',
-	text: 'm-auto text-center',
-	button: 'flow-root m-auto mt-2 bg-gray-300 px-4 py-1 rounded-lg border-gray-500 border-2 hover:bg-gray-400',
+	container: 'absolute sm:w-[20vw] sm:h-[10vh] bg-white rounded-lg',
+	titleContainer: 'w-full bg-red-600 p-1 rounded-t-lg',
+	title: 'm-auto mb-1 text-lg font-bold text-center text-white',
+	text: 'm-auto text-center my-2 mx-4',
+	button: 'flow-root m-auto my-2 bg-red-300 px-4 py-1 rounded-lg border-red-500 border-2 hover:bg-red-400',
 };
 
 const ModalBackdrop = (props) => {
@@ -16,7 +17,9 @@ const ModalBackdrop = (props) => {
 		<div className={classes.backdrop} id='modal-backdrop'>
 			{' '}
 			<div className={classes.container}>
-				<h1 className={classes.title}>Error!</h1>
+				<div className={classes.titleContainer}>
+					<h1 className={classes.title}>Error!</h1>
+				</div>
 				<p className={classes.text}>
 					Invalid expense info provided.
 				</p>
