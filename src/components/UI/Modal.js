@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const classes = {
 	backdrop:
 		'fixed z-10 top-0 left-0 flex flex-row place-items-center place-content-center bg-gray-800 bg-opacity-50 w-[100vw] h-[100vh]',
-	container: 'absolute w-[20vw] h-[10vh] p-4 bg-white rounded-lg',
+	container: 'absolute sm:w-[20vw] sm:h-[10vh] p-4 bg-white rounded-lg',
 	title: 'm-auto mb-1 text-lg font-bold text-center',
 	text: 'm-auto text-center',
 	button: 'flow-root m-auto mt-2 bg-gray-300 px-4 py-1 rounded-lg border-gray-500 border-2 hover:bg-gray-400',
