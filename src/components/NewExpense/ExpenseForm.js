@@ -19,16 +19,22 @@ const ExpenseForm = (props) => {
 	const [enteredTitle, setEnteredTitle] = useState('');
 	const [enteredAmt, setEnteredAmt] = useState('');
 	const [enteredDate, setEnteredDate] = useState('');
-	const [enteredCat, setEnteredCat] = useState('');
+	const [enteredCat, setEnteredCat] = useState('Other');
 
 	const titleChangedHandler = (e) => {
 		setEnteredTitle(e.target.value);
+		console.log(e.target.value);
 	};
 	const amtChangedHandler = (e) => {
 		setEnteredAmt(parseFloat(e.target.value));
+		console.log(e.target.value);
 	};
 	const dateChangedHandler = (e) => {
 		setEnteredDate(e.target.value);
+		console.log(e.target.value);
+	};
+	const catChangedHandler = (e) => {
+		setEnteredCat(e.target.value);
 		console.log(e.target.value);
 	};
 
@@ -47,6 +53,7 @@ const ExpenseForm = (props) => {
 			title: enteredTitle,
 			amt: enteredAmt,
 			date: new Date(enteredDate),
+			cat: enteredCat,
 		};
 
 		props.onNewExpenseData(expenseData);
@@ -100,6 +107,7 @@ const ExpenseForm = (props) => {
 						<select
 							className={classes.input}
 							name='expense-cat'
+							onChange={catChangedHandler}
 						>
 							<option>Other</option>
 							<option>Bill</option>
