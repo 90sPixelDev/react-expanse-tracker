@@ -27,6 +27,10 @@ const Stats = (props) => {
 			month: prevState.month,
 			year: e.target.value,
 		}));
+		updateStatsYear(e);
+	};
+
+	const updateStatsYear = (e) => {
 		if (e.target.value === 'All' && selectedStatFilter.month === 'All') {
 			console.log('All years all months!');
 			props.data.forEach((expense) => {
@@ -48,6 +52,7 @@ const Stats = (props) => {
 			});
 		} else if (e.target.value === 'All' && selectedStatFilter.month) {
 			props.data.forEach((expense) => {
+				console.log('All years one month!');
 				if (
 					expense.date.toLocaleString('en-US', {
 						month: 'short',
@@ -79,10 +84,10 @@ const Stats = (props) => {
 			month: e.target.value,
 			year: prevState.year,
 		}));
-		updateStats(e);
+		updateStatsMonth(e);
 	};
 
-	const updateStats = (e) => {
+	const updateStatsMonth = (e) => {
 		if (e.target.value === 'All' && selectedStatFilter.year === 'All') {
 			console.log('All months all years!');
 			props.data.forEach((expense) => {
@@ -104,15 +109,19 @@ const Stats = (props) => {
 					setTotal(sum.toFixed(2));
 				}
 			});
-		} else if (selectedStatFilter.year != 'All') {
-			console.log('One month one year!');
+		} else if () {
+			console.log('One month all')
+		}
+		
+		else if (
+			selectedStatFilter.year != 'All' &&
+			e.target.value === 'All'
+		) {
+			console.log('All months one year!');
 			props.data.forEach((expense) => {
 				if (
-					expense.date.toLocaleString('en-US', {
-						month: 'short',
-					}) === e.target.value &&
 					expense.date.getFullYear() ===
-						parseInt(selectedStatFilter.year)
+					parseInt(selectedStatFilter.year)
 				) {
 					sum += expense.amt;
 					setTotal(sum.toFixed(2));
