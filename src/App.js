@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './tailwind.css';
 import Expenses from './components/Expenses/Expenses';
-import HomeBody from './components/UI/HomeBody';
+import Wrapper from './components/UI/Wrapper';
 import NewExpense from './components/NewExpense/NewExpense';
 import Stats from './components/stats/Stats';
 import Header from './components/UI/Header';
@@ -57,13 +57,13 @@ const App = () => {
 	};
 
 	return (
-		<HomeBody>
+		<Wrapper>
 			<Header />
 			<NewExpense onAddExpense={addExpenseHandler} />
 			<Stats data={expenses}></Stats>
 			<Expenses items={expenses} />
 			<Footer />
-		</HomeBody>
+		</Wrapper>
 	);
 };
 

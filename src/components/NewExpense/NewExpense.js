@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import ExpenseForm from './ExpenseForm';
 import PropTypes from 'prop-types';
 import autoAnimate from '@formkit/auto-animate';
+import Modal from '../UI/Modal';
 
 const NewExpense = (props) => {
 	const classes = {
@@ -35,6 +36,11 @@ const NewExpense = (props) => {
 		</div>
 	);
 
+	const [invalid, setInvalid] = useState(false);
+	const error = () => {
+		setInvalid((prevState) => !prevState);
+	};
+
 	return (
 		<section className={classes.sectionNew} ref={animParent}>
 			{!revealedForm && (
@@ -51,8 +57,10 @@ const NewExpense = (props) => {
 				<ExpenseForm
 					onNewExpenseData={newExpenseData}
 					revealFormHandler={RevealFormHandler}
+					invalidSub={error}
 				/>
 			)}
+			{invalid && <Modal finalConfirm={error} />}
 		</section>
 	);
 };

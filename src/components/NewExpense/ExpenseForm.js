@@ -10,7 +10,6 @@ const ExpenseForm = (props) => {
 		controlParent: 'm-auto sm:p-1',
 		label: 'text-white flow-root text-center text-sm sm:text-base',
 		input: 'w-[5em] sm:w-[8em] rounded-md p-1',
-		amtInput: 'w-[5em] sm:w-[8em] rounded-lg m-auto flow-root',
 		buttons: 'flex flex-row my-2',
 		new: 'bg-white sm:hover:bg-gray-200 p-1 rounded-lg m-auto sm:p-2',
 		submit: 'bg-green-200 sm:hover:bg-green-400 p-1 rounded-lg m-auto sm:p-2',
@@ -20,6 +19,7 @@ const ExpenseForm = (props) => {
 	const [enteredTitle, setEnteredTitle] = useState('');
 	const [enteredAmt, setEnteredAmt] = useState('');
 	const [enteredDate, setEnteredDate] = useState('');
+	const [enteredCat, setEnteredCat] = useState('');
 
 	const titleChangedHandler = (e) => {
 		setEnteredTitle(e.target.value);
@@ -34,6 +34,14 @@ const ExpenseForm = (props) => {
 
 	const submitHandler = (e) => {
 		e.preventDefault();
+
+		if (enteredAmt === '' || enteredTitle === '' || enteredDate === '') {
+			props.invalidSub();
+			setEnteredTitle('');
+			setEnteredAmt('');
+			setEnteredDate('');
+			return;
+		}
 
 		const expenseData = {
 			title: enteredTitle,
@@ -57,7 +65,6 @@ const ExpenseForm = (props) => {
 							className={classes.input}
 							type='text'
 							name='expense-title'
-							required
 							value={enteredTitle}
 							onChange={titleChangedHandler}
 						/>
@@ -65,12 +72,11 @@ const ExpenseForm = (props) => {
 					<div className={classes.controlParent}>
 						<label className={classes.label}>Amount</label>
 						<input
-							className={classes.amtInput}
+							className={classes.input}
 							type='number'
 							min='0.01'
 							step='0.01'
 							name='expense-amount'
-							required
 							value={enteredAmt}
 							onChange={amtChangedHandler}
 						/>
@@ -85,20 +91,22 @@ const ExpenseForm = (props) => {
 							min='2019-01-01'
 							max='2022-06-01'
 							name='expense-date'
-							defaultValue='today'
-							required
 							value={enteredDate}
 							onChange={dateChangedHandler}
 						/>
 					</div>
 					<div className={classes.controlParent}>
 						<label className={classes.label}>Category</label>
-						<input
+						<select
 							className={classes.input}
-							type='text'
 							name='expense-cat'
-							required
-						/>
+						>
+							<option>Other</option>
+							<option>Bill</option>
+							<option>Food</option>
+							<option>Fun</option>
+							<option>Debt</option>
+						</select>
 					</div>
 				</div>
 				<div className={classes.buttons}>
@@ -122,6 +130,7 @@ ExpenseForm.propTypes = {
 	onNewExpenseData: PropTypes.func,
 	onAdded: PropTypes.func,
 	revealFormHandler: PropTypes.func,
+	invalidSub: PropTypes.func,
 };
 
 export default ExpenseForm;
