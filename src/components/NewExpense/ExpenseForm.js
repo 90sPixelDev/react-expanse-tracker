@@ -8,8 +8,8 @@ const ExpenseForm = (props) => {
 		container: 'flex flex-col h-full justify-evenly',
 		smScreenParent: 'w-full min-w-[300px] flex flex-row justify-center',
 		controlParent: 'm-auto sm:p-1',
-		label: 'text-white flow-root text-center text-sm sm:text-base',
-		input: 'w-[5em] sm:w-[8em] rounded-md p-1',
+		label: 'flow-root text-center text-sm sm:text-base',
+		input: 'w-[5em] sm:w-[8em] rounded-md p-1 border-2 border-gray-300',
 		buttons: 'flex flex-row my-2',
 		new: 'bg-white sm:hover:bg-gray-200 p-1 rounded-lg m-auto sm:p-2',
 		submit: 'bg-green-200 sm:hover:bg-green-400 p-1 rounded-lg m-auto sm:p-2',
@@ -113,7 +113,7 @@ const ExpenseForm = (props) => {
 							<option>Bill</option>
 							<option>Food</option>
 							<option>Fun</option>
-							<option>Debt</option>
+							<option>Loan</option>
 						</select>
 					</div>
 				</div>

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const Chart = (props) => {
 	const classes = {
-		chart: 'w-full h-[120px] bg-red-200 flex flex-row gap-1 overflow-x-auto justify-between items-end rounded-lg',
+		chart: 'w-full h-[120px] bg-white flex flex-row gap-1 overflow-x-auto justify-between items-end rounded-lg border-2 border-gray-300',
 	};
 
 	const valueArray = props.dataPoints.map((dataPoint) => dataPoint.value);

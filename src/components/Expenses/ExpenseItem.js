@@ -7,13 +7,13 @@ const ExpenseItem = (props) => {
 
 	const classes = {
 		expenseParent:
-			'w-[90%] group bg-red-50 sm:hover:scale-105 shadow-lg transition-all ease-in-out pb-[.025em] rounded-[2em]',
+			'w-[90%] group bg-red-50 sm:hover:scale-105 sm:hover:shadow-gray-800/100 shadow-lg shadow- transition-all ease-in-out pb-[.025em] rounded-[2em]',
 		spacing: 'flex items-center justify-between mx-4 my-2',
 		flexLayout: 'inline-flex w-100',
 		expenseTitle:
 			'text-gray-700 group-hover:text-black font-bold text-[4vw] xsm:text-xl sm:text-2xl my-auto p-3',
 		expenseAmt:
-			'bg-red-300 w-[150px] text-center p-3 rounded-3xl border-2 border-red-600',
+			'bg-white w-[150px] text-center p-3 rounded-3xl border-2 border-gray-400',
 		expenseAmtText: 'text-[4vw] xsm:text-xl',
 		category: 'text-center w-[100%] rounded-b-full',
 	};

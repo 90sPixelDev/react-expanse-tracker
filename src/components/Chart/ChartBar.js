@@ -20,8 +20,8 @@ const ChartBar = (props) => {
 		parent: 'h-fit',
 		container: 'h-full',
 		barBorder:
-			'flex flex-col justify-end border-2 border-red-600 rounded-full h-[90px] w-[1em] mx-auto bg-red-400',
-		bar: 'bg-red-900 w-[.75em]',
+			'flex flex-col justify-end border-2 border-red-300 rounded-full h-[90px] w-[1em] mx-auto bg-red-100',
+		bar: 'bg-red-300 w-[.75em]',
 		title: '',
 	};
 

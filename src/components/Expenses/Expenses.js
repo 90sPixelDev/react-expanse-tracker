@@ -7,9 +7,9 @@ import ExpensesList from './ExpensesList';
 
 const Expenses = (props) => {
 	const classes = {
-		card: 'bottom-4 mx-5 bg-red-600 w-[90vw] sm:w-[620px] flex flex-col self-start min-h-[30vh] transition',
-		topBottom:
-			'w-full bg-gradient-to-r from-transparent via-red-400 to-transparent py-1',
+		card: 'bottom-4 mx-5 bg-gray-100 w-[90vw] sm:w-[620px] flex flex-col self-start min-h-[30vh] transition',
+		top: 'w-full py-1 border-x-2 border-gray-300 rounded-t-3xl',
+		bottom: 'w-full py-1 border-x-2 border-gray-300 rounded-b-3xl',
 	};
 
 	const [filteredYear, setFilteredYear] = useState('All');
@@ -25,14 +25,14 @@ const Expenses = (props) => {
 
 	return (
 		<Card className={classes.card}>
-			<div className={classes.topBottom}>
+			<div className={classes.top}>
 				<ExpenseFilter
 					onFilterChanged={filterHandler}
 					year={filteredYear}
 				/>
 			</div>
 			<ExpensesList items={filteredExpenses} />
-			<div className={classes.topBottom}>
+			<div className={classes.bottom}>
 				<ExpensesBottom />
 			</div>
 		</Card>

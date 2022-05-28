@@ -7,7 +7,7 @@ import Modal from '../UI/Modal';
 const NewExpense = (props) => {
 	const classes = {
 		sectionNew:
-			'my-2 h-[90%] w-[90%] max-w-[450px] bg-red-600 rounded-3xl',
+			'my-2 h-[90%] w-[90%] max-w-[450px] bg-gray-100 border-2 border-gray-300 rounded-3xl',
 		parent: 'w-full w-full h-full grid place-items-center rounded-3xl',
 		button: 'bg-white sm:hover:bg-gray-200 rounded-lg w-max h-max py-1 px-2',
 	};

@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 const ExpensesFilter = (props) => {
 	const classes = {
 		control: 'mx-5 mt-3 flex justify-between items-baseline',
-		select: 'rounded-md p-1 w-15',
-		label: 'mr-3 text-white',
+		select: 'rounded-md p-1 w-15 border-2 border-gray-300',
+		label: 'mr-3',
 	};
 
 	const onFilterSelectedHandler = (e) => {
