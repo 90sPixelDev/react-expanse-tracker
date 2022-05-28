@@ -2,7 +2,7 @@ import React from 'react';
 
 const Header = () => {
 	const classes = {
-		header: 'w-full h-full bg-gray-900',
+		header: 'w-full h-full bg-gray-500',
 		menu: 'h-full',
 		listParent: 'flex h-full justify-evenly items-center',
 		listItem: 'text-white w-[33%] text-center py-3',
