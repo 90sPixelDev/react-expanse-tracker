@@ -5,11 +5,11 @@ import ExpensesChart from '../Chart/ExpensesChart';
 const Stats = (props) => {
 	const classes = {
 		wholeSection:
-			'bg-gray-100 border-2 border-gray-300 w-[80vw] min-w-[200px] min-h-[150px] max-w-[620px] flex flex-col sm:flex-row gap-2 p-3 rounded-lg overflow-y-auto',
+			'bg-gray-100 border-2 border-gray-200 w-[80vw] min-w-[200px] min-h-[150px] max-w-[620px] flex flex-col sm:flex-row gap-2 p-3 rounded-lg overflow-y-auto',
 		subSection: 'min-w-[200px] sm:mr-2',
 		miniRow: 'h-[35px] min-h-[15px] flex justify-between items-baseline',
 		statTitle: 'flow-root my-auto',
-		select: 'my-auto w-[65px] p-1 rounded-md border-2 border-gray-300',
+		select: 'my-auto w-[65px] p-1 rounded-md bg-white border-2 border-gray-300',
 		amt: 'my-auto',
 	};
 
