@@ -21,6 +21,13 @@ const ExpenseForm = (props) => {
 	const enteredDateRef = useRef();
 	const enteredCatRef = useRef();
 
+	const resetForm = () => {
+		enteredAmtRef.current.value = '';
+		enteredTitleRef.current.value = '';
+		enteredDateRef.current.value = '';
+		enteredCatRef.current.value = '';
+	};
+
 	const submitHandler = (e) => {
 		e.preventDefault();
 		const enteredAmt = enteredAmtRef.current.value;
@@ -30,6 +37,7 @@ const ExpenseForm = (props) => {
 
 		if (enteredAmt === '' || enteredTitle === '' || enteredDate === '') {
 			props.invalidSub();
+			resetForm();
 			return;
 		}
 
@@ -41,10 +49,7 @@ const ExpenseForm = (props) => {
 		};
 
 		props.onNewExpenseData(expenseData);
-		enteredAmtRef.current.value = '';
-		enteredTitleRef.current.value = '';
-		enteredDateRef.current.value = '';
-		enteredCatRef.current.value = '';
+		resetForm();
 	};
 
 	return (
