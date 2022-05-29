@@ -9,10 +9,10 @@ const ExpensesList = (props) => {
 			'flex flex-col flex-nowrap gap-4 items-center self-start overflow-auto w-[100%] bg-gradient-to-r from-white via-black/10 to-white py-3 sm:h-[50vh] h-[70vh] border-gray-300 border-x-2',
 		noContent: 'm-auto font-bold',
 	};
-	const animParent = useRef(null);
+	const expensesParentRef = useRef(null);
 	useEffect(() => {
-		animParent.current && autoAnimate(animParent.current);
-	}, [animParent]);
+		expensesParentRef.current && autoAnimate(expensesParentRef.current);
+	}, [expensesParentRef]);
 
 	let expensesContent = (
 		<p className={classes.noContent}>No expenses found.</p>
@@ -31,7 +31,7 @@ const ExpensesList = (props) => {
 	}
 
 	return (
-		<ul className={classes.expenses} ref={animParent}>
+		<ul className={classes.expenses} ref={expensesParentRef}>
 			{expensesContent}
 		</ul>
 	);

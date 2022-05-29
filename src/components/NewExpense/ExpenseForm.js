@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 
@@ -16,50 +16,35 @@ const ExpenseForm = (props) => {
 		cancel: 'bg-red-200 sm:hover:bg-red-400 p-1 rounded-lg m-auto sm:p-2',
 	};
 
-	const [enteredTitle, setEnteredTitle] = useState('');
-	const [enteredAmt, setEnteredAmt] = useState('');
-	const [enteredDate, setEnteredDate] = useState('');
-	const [enteredCat, setEnteredCat] = useState('Other');
-
-	const titleChangedHandler = (e) => {
-		setEnteredTitle(e.target.value);
-		console.log(e.target.value);
-	};
-	const amtChangedHandler = (e) => {
-		setEnteredAmt(parseFloat(e.target.value));
-		console.log(e.target.value);
-	};
-	const dateChangedHandler = (e) => {
-		setEnteredDate(e.target.value);
-		console.log(e.target.value);
-	};
-	const catChangedHandler = (e) => {
-		setEnteredCat(e.target.value);
-		console.log(e.target.value);
-	};
+	const enteredTitleRef = useRef();
+	const enteredAmtRef = useRef();
+	const enteredDateRef = useRef();
+	const enteredCatRef = useRef();
 
 	const submitHandler = (e) => {
 		e.preventDefault();
+		const enteredAmt = enteredAmtRef.current.value;
+		const enteredTitle = enteredTitleRef.current.value;
+		const enteredDate = enteredDateRef.current.value;
+		const enteredCat = enteredCatRef.current.value;
 
 		if (enteredAmt === '' || enteredTitle === '' || enteredDate === '') {
 			props.invalidSub();
-			setEnteredTitle('');
-			setEnteredAmt('');
-			setEnteredDate('');
 			return;
 		}
 
 		const expenseData = {
 			title: enteredTitle,
-			amt: enteredAmt,
+			amt: parseFloat(enteredAmt),
 			date: new Date(enteredDate),
 			cat: enteredCat,
 		};
 
 		props.onNewExpenseData(expenseData);
-		setEnteredTitle('');
-		setEnteredAmt('');
-		setEnteredDate('');
+		enteredAmtRef.current.value = '';
+		enteredTitleRef.current.value = '';
+		enteredDateRef.current.value = '';
+		enteredCatRef.current.value = '';
 	};
 
 	return (
@@ -72,8 +57,7 @@ const ExpenseForm = (props) => {
 							className={classes.input}
 							type='text'
 							name='expense-title'
-							value={enteredTitle}
-							onChange={titleChangedHandler}
+							ref={enteredTitleRef}
 						/>
 					</div>
 					<div className={classes.controlParent}>
@@ -84,8 +68,7 @@ const ExpenseForm = (props) => {
 							min='0.01'
 							step='0.01'
 							name='expense-amount'
-							value={enteredAmt}
-							onChange={amtChangedHandler}
+							ref={enteredAmtRef}
 						/>
 					</div>
 				</div>
@@ -98,8 +81,7 @@ const ExpenseForm = (props) => {
 							min='2019-01-01'
 							max='2022-06-01'
 							name='expense-date'
-							value={enteredDate}
-							onChange={dateChangedHandler}
+							ref={enteredDateRef}
 						/>
 					</div>
 					<div className={classes.controlParent}>
@@ -107,7 +89,7 @@ const ExpenseForm = (props) => {
 						<select
 							className={classes.input}
 							name='expense-cat'
-							onChange={catChangedHandler}
+							ref={enteredCatRef}
 						>
 							<option>Other</option>
 							<option>Bill</option>

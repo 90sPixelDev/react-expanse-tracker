@@ -11,6 +11,15 @@ module.exports = {
 				layout: '50px, minmax(min-content, fit-content), minmax(min-content, fit-content), minmax(500px, auto-fill)',
 				stats: '1fr 3.5fr',
 			},
+			animation: {
+				fadeIn: 'fadeIn 1s backwards',
+			},
+			keyframes: {
+				fadeIn: {
+					'0%': { opacity: 0 },
+					'100%': { opacity: 1 },
+				},
+			},
 		},
 		screens: {
 			'xsm': '420px',

@@ -21,6 +21,13 @@ const Stats = (props) => {
 		year: 'All',
 	});
 
+	const addAll = () => {
+		props.data.forEach((expense) => {
+			sum += expense.amt;
+			setTotal(sum.toFixed(2));
+		});
+	};
+
 	const yearSpendFilterHandler = (e) => {
 		setTotal(0);
 		setSelectedStatFilter((prevState) => ({
@@ -33,10 +40,7 @@ const Stats = (props) => {
 	const updateStatsYear = (e) => {
 		if (e.target.value === 'All' && selectedStatFilter.month === 'All') {
 			console.log('All years all months!');
-			props.data.forEach((expense) => {
-				sum += expense.amt;
-				setTotal(sum.toFixed(2));
-			});
+			addAll();
 		} else if (
 			e.target.value !== 'All' &&
 			selectedStatFilter.month === 'All'
@@ -90,10 +94,7 @@ const Stats = (props) => {
 	const updateStatsMonth = (e) => {
 		if (e.target.value === 'All' && selectedStatFilter.year === 'All') {
 			console.log('All months all years!');
-			props.data.forEach((expense) => {
-				sum += expense.amt;
-				setTotal(sum.toFixed(2));
-			});
+			addAll();
 		} else if (
 			e.target.value !== 'All' &&
 			selectedStatFilter.year === 'All'

@@ -21,7 +21,7 @@ const ChartBar = (props) => {
 		container: 'h-full',
 		barBorder:
 			'flex flex-col justify-end border-2 border-red-300 rounded-full h-[90px] w-[1em] mx-auto bg-red-100',
-		bar: 'bg-red-300 w-[.75em]',
+		bar: 'bg-red-300 w-[.75em] transition-all ease-out duration-500',
 		title: '',
 	};
 

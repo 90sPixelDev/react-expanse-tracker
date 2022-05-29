@@ -13,7 +13,7 @@ const ExpenseItem = (props) => {
 		expenseTitle:
 			'text-gray-700 group-hover:text-black font-bold text-[4vw] xsm:text-xl sm:text-2xl my-auto p-3',
 		expenseAmt:
-			'bg-white w-[150px] text-center p-3 rounded-3xl border-2 border-gray-400',
+			'bg-white w-[150px] text-center p-3 rounded-3xl border-2 border-gray-200',
 		expenseAmtText: 'text-[4vw] xsm:text-xl',
 		category: 'text-center w-[100%] rounded-b-full',
 	};
