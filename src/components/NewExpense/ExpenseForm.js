@@ -1,6 +1,5 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 const ExpenseForm = (props) => {
 	const classes = {
