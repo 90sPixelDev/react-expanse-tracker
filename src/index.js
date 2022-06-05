@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './tailwind.css';
 import App from './App';
-import history from './utils/history';
 import { Auth0Provider } from '@auth0/auth0-react';
+import Auth0ProviderWithHistory from './components/Auth/Auth0ProviderWithNavigate';
 import AuthConfig from './AuthConfig';
+import './tailwind.css';
+import { BrowserRouter } from 'react-router-dom';
 
 const onRedirectCallback = (appState) => {
 	history.push(
@@ -14,8 +15,6 @@ const onRedirectCallback = (appState) => {
 	);
 };
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-
 const providerConfig = {
 	domain: AuthConfig.domain,
 	clientId: AuthConfig.clientId,
@@ -24,8 +23,14 @@ const providerConfig = {
 	onRedirectCallback,
 };
 
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
-	<Auth0Provider {...providerConfig}>
-		<App />
-	</Auth0Provider>
+	<BrowserRouter>
+		{/* <Auth0Provider {...providerConfig}> */}
+		<Auth0ProviderWithHistory>
+			<App />
+		</Auth0ProviderWithHistory>
+		{/* </Auth0Provider> */}
+	</BrowserRouter>
 );
