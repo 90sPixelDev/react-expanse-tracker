@@ -1,12 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Auth0Provider } from '@auth0/auth0-react';
-import AuthConfig from '../../AuthConfig';
 import PropTypes from 'prop-types';
 
 const Auth0ProviderWithNavigate = ({ children }) => {
-	const domain = AuthConfig.domain;
-	const clientId = AuthConfig.clientId;
+	const domain = process.env.REACT_APP_AUTH0_DOMAIN;
+	const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
 
 	const navigate = useNavigate();
 
