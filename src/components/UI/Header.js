@@ -1,6 +1,7 @@
 import React from 'react';
 import Profile from '../User/Profile';
 import AuthBtn from '../Auth/AuthBtn';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Header = () => {
 	const classes = {
@@ -10,7 +11,11 @@ const Header = () => {
 		listItem: 'text-white w-[33%] text-center py-3',
 		listLog: 'w-[33%] text-center py-3',
 		listProfile: 'w-[50%] text-center py-3',
+		loading: 'text-white',
 	};
+	const { isAuthenticated } = useAuth0();
+
+	const loading = <div className={classes.loading}>No User Available</div>;
 
 	return (
 		<header className={classes.header}>
@@ -18,7 +23,7 @@ const Header = () => {
 				<ul className={classes.listParent}>
 					<li className={classes.listItem}>MinExpense</li>
 					<li className={classes.listProfile}>
-						{/* <Profile /> */}
+						{isAuthenticated ? <Profile /> : loading}
 					</li>
 					<li className={classes.listLog}>
 						<AuthBtn />

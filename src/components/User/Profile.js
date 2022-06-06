@@ -1,10 +1,11 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 
-const Profile = (props) => {
+const Profile = () => {
 	const classes = {
-		parent: 'bg-gray-100 rounded-lg flex flex-row gap-4 p-2',
+		parent: 'bg-gray-100 rounded-lg flex flex-row gap-4 p-2 items-center',
 		loading: 'bg-gray-100 rounded-lg p-2',
+		pic: 'rounded-full h-[50px]',
 	};
 
 	const { user, isAuthenticated, isLoading } = useAuth0();
@@ -13,31 +14,17 @@ const Profile = (props) => {
 		return <div className={classes.loading}>Loading ...</div>;
 	}
 
-	console.log(user);
-
-	// if (user === undefined) {
-	// 	console.log('No User');
-	// 	user.name = 'John Smith';
-	// 	user.email = 'John Smith@example.com';
-	// }
-
-	const profile = (
-		<div className={classes.parent}>
-			<h2>{user.name}</h2>
-			<p>{user.email}</p>
-		</div>
-	);
-
-	const noProfile = (
-		<div>
-			<h2>NO USER</h2>
-		</div>
-	);
-
 	return (
 		<>
-			{isAuthenticated && profile}
-			{!isAuthenticated && noProfile}
+			<div className={classes.parent}>
+				<img
+					className={classes.pic}
+					src={user.picture}
+					alt={user.name}
+				/>
+				<h2>{user.name}</h2>
+				<p>{user.email}</p>
+			</div>
 		</>
 	);
 };

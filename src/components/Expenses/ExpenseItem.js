@@ -18,7 +18,6 @@ const ExpenseItem = (props) => {
 		category: 'text-center w-[100%] rounded-b-full',
 	};
 
-	// Styling the category type
 	let cateoryStyle = { backgroundColor: 'rgb(255, 255, 255)' };
 	let bg = { backgroundColor: 'rgb(230, 230, 230)' };
 	switch (props.category) {

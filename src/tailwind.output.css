@@ -558,6 +558,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-\[100vh\]{
   height: 100vh;
 }
+.h-\[50px\]{
+  height: 50px;
+}
 .min-h-\[30vh\]{
   min-height: 30vh;
 }
@@ -608,6 +611,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .w-\[33\%\]{
   width: 33%;
+}
+.w-\[50\%\]{
+  width: 50%;
 }
 .w-\[100vw\]{
   width: 100vw;
@@ -816,6 +822,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .p-1{
   padding: 0.25rem;
+}
+.p-2{
+  padding: 0.5rem;
 }
 .px-2{
   padding-left: 0.5rem;
