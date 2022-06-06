@@ -5,6 +5,7 @@ import {
 	regular,
 	brands,
 } from '@fortawesome/fontawesome-svg-core/import.macro';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => {
 	const classes = {
@@ -16,12 +17,18 @@ const Footer = () => {
 		icon: 'my-auto',
 	};
 
-	const element = <FontAwesomeIcon icon={regular('coffee')} />;
+	const gitHubIcon = (
+		<FontAwesomeIcon className={classes.icon} icon={faGithub} />
+	);
+	const homeIcon = (
+		<FontAwesomeIcon className={classes.icon} icon={solid('house')} />
+	);
 
 	return (
 		<footer className={classes.footer}>
 			<div className={classes.content}>
 				<div className={classes.row}>
+					{homeIcon}
 					<a
 						className={classes.links}
 						href='http://lienfont.dev'
@@ -31,7 +38,7 @@ const Footer = () => {
 						Portfolio Website
 					</a>
 					<p className={classes.text}>|</p>
-					{element}
+					{gitHubIcon}
 					<a
 						className={classes.links}
 						href='https://github.com/90sPixelDev'
