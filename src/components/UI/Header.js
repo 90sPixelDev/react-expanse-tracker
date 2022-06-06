@@ -9,6 +9,7 @@ const Header = () => {
 		listParent: 'flex h-full justify-evenly items-center',
 		listItem: 'text-white w-[33%] text-center py-3',
 		listLog: 'w-[33%] text-center py-3',
+		listProfile: 'w-[50%] text-center py-3',
 	};
 
 	return (
@@ -16,8 +17,8 @@ const Header = () => {
 			<nav className={classes.menu}>
 				<ul className={classes.listParent}>
 					<li className={classes.listItem}>MinExpense</li>
-					<li className={classes.listItem}>
-						{/* <Profile /> */}
+					<li className={classes.listProfile}>
+						<Profile />
 					</li>
 					<li className={classes.listLog}>
 						<AuthBtn />

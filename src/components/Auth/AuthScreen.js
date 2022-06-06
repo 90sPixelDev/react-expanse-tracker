@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import LoggedIn from './LoggedIn';
 
-const AuthScreen = () => {
+const AuthScreen = (props) => {
 	const { user, isAuthenticated, isLoading } = useAuth0();
-
-	console.log(isAuthenticated);
 
 	const loggedOut = (
 		<div>
@@ -13,12 +11,7 @@ const AuthScreen = () => {
 		</div>
 	);
 
-	return (
-		<>
-			{isAuthenticated && <LoggedIn />}
-			{!isAuthenticated && loggedOut}
-		</>
-	);
+	return <>{isAuthenticated ? <LoggedIn /> : loggedOut}</>;
 };
 
 export default AuthScreen;

@@ -5,22 +5,6 @@ import Auth0ProviderWithHistory from './components/Auth/Auth0ProviderWithNavigat
 import { BrowserRouter } from 'react-router-dom';
 import './tailwind.css';
 
-const onRedirectCallback = (appState) => {
-	history.push(
-		appState && appState.returnTo
-			? appState.returnTo
-			: window.location.pathname
-	);
-};
-
-const providerConfig = {
-	domain: process.env.REACT_APP_AUTH0_DOMAIN,
-	clientId: process.env.REACT_APP_AUTH0_CLIENT_ID,
-	...(process.env.audience ? { audience: process.env.audience } : null),
-	redirectUri: window.location.origin,
-	onRedirectCallback,
-};
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(

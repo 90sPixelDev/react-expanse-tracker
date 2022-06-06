@@ -26,7 +26,7 @@ const Auth0ProviderWithNavigate = ({ children }) => {
 };
 
 Auth0ProviderWithNavigate.propTypes = {
-	children: PropTypes.object,
+	children: PropTypes.any,
 };
 
 export default Auth0ProviderWithNavigate;

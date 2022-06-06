@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import Expenses from '../Expenses/Expenses';
 import NewExpense from '../NewExpense/NewExpense';
 import Stats from '../stats/Stats';
-import AuthBtn from './AuthBtn';
 
-const LoggedIn = () => {
+const LoggedIn = (props) => {
 	const initExpenses = [
 		// {
 		// 	id: `exp-${Math.random() * 3}`,

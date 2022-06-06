@@ -3,8 +3,8 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 const Profile = () => {
 	const classes = {
-		parent: 'bg-gray-100',
-		loading: 'bg-gray-100 rounded-lg',
+		parent: 'bg-gray-100 rounded-lg flex flex-row gap-4 p-2',
+		loading: 'bg-gray-100 rounded-lg p-2',
 	};
 
 	const { user, isAuthenticated, isLoading } = useAuth0();
