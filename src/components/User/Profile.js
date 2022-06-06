@@ -13,11 +13,16 @@ const Profile = () => {
 		return <div className={classes.loading}>Loading ...</div>;
 	}
 
-	if (user === null) console.log('No User');
+	if (user === undefined) {
+		console.log('No User');
+		user.picture = 'none';
+		user.name = 'John Smith';
+		user.email = 'John Smith@example.com';
+	}
 
 	const profile = (
 		<div className={classes.parent}>
-			{/* <img src={user.picture} alt={user.name} /> */}
+			<img src={user.picture} alt={user.name} />
 			<h2>{user.name}</h2>
 			<p>{user.email}</p>
 		</div>
