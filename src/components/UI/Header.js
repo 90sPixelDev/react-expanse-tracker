@@ -18,7 +18,7 @@ const Header = () => {
 				<ul className={classes.listParent}>
 					<li className={classes.listItem}>MinExpense</li>
 					<li className={classes.listProfile}>
-						<Profile />
+						{/* <Profile /> */}
 					</li>
 					<li className={classes.listLog}>
 						<AuthBtn />
