@@ -1,4 +1,10 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+	solid,
+	regular,
+	brands,
+} from '@fortawesome/fontawesome-svg-core/import.macro';
 
 const Footer = () => {
 	const classes = {
@@ -7,7 +13,10 @@ const Footer = () => {
 		row: 'flex flex-row justify-center',
 		text: 'text-white mx-auto text-center mx-2 text-sm',
 		links: 'text-white mx-auto text-center mx-2 text-sm underline decoration-solid',
+		icon: 'my-auto',
 	};
+
+	const element = <FontAwesomeIcon icon={regular('coffee')} />;
 
 	return (
 		<footer className={classes.footer}>
@@ -22,6 +31,7 @@ const Footer = () => {
 						Portfolio Website
 					</a>
 					<p className={classes.text}>|</p>
+					{element}
 					<a
 						className={classes.links}
 						href='https://github.com/90sPixelDev'
