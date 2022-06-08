@@ -19,8 +19,6 @@ const Profile = () => {
 		return <div className={classes.loading}>Loading ...</div>;
 	}
 
-	console.log(showProfile);
-
 	return (
 		<>
 			<button
