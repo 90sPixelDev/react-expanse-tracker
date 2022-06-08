@@ -18,8 +18,10 @@ const ExpensesList = (props) => {
 		<p className={classes.noContent}>No expenses found.</p>
 	);
 
-	if (props.items.length > 0) {
-		expensesContent = props.items.map((expense) => (
+	console.log(props.expenses);
+
+	if (props.expenses && props.expenses.length > 0) {
+		expensesContent = props.expenses.map((expense) => (
 			<ExpenseItem
 				key={expense.id}
 				title={expense.title}
@@ -38,7 +40,7 @@ const ExpensesList = (props) => {
 };
 
 ExpensesList.propTypes = {
-	items: PropTypes.array,
+	expenses: PropTypes.any,
 };
 
 export default ExpensesList;

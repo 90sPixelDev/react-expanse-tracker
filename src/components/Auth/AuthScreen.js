@@ -1,8 +1,9 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
+import PropTypes from 'prop-types';
 import LoggedIn from './LoggedIn';
 
-const AuthScreen = (expenses) => {
+const AuthScreen = (props) => {
 	const { user, isAuthenticated, isLoading } = useAuth0();
 
 	const loggedOut = (
@@ -14,9 +15,24 @@ const AuthScreen = (expenses) => {
 		return <div>Loading ...</div>;
 	}
 
+	const updatingDataHandler = (expense) => {
+		props.onFinalUpdate(expense);
+	};
+
 	return (
-		<>{isAuthenticated ? <LoggedIn expenses={expenses} /> : loggedOut}</>
+		<>
+			{isAuthenticated ? (
+				<LoggedIn
+					expenses={props.data}
+					onUpdateData={updatingDataHandler}
+				/>
+			) : (
+				loggedOut
+			)}
+		</>
 	);
 };
+
+AuthScreen.propTypes = { data: PropTypes.array, onFinalUpdate: PropTypes.func };
 
 export default AuthScreen;

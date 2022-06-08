@@ -3,6 +3,8 @@ import ExpenseForm from './ExpenseForm';
 import PropTypes from 'prop-types';
 import autoAnimate from '@formkit/auto-animate';
 import Modal from '../UI/Modal';
+import { db } from '../../firebase.config';
+import { collection, addDoc } from 'firebase/firestore';
 
 const NewExpense = (props) => {
 	const classes = {
@@ -14,12 +16,14 @@ const NewExpense = (props) => {
 	const [revealedForm, setRevealedForm] = useState(false);
 	const animParent = useRef(null);
 
-	const newExpenseData = (enteredExpenseData) => {
+	const expensesCollectionRef = collection(db, 'expenses');
+
+	const newExpenseData = async (enteredExpenseData) => {
 		const expenseData = {
-			id: `exp-${Math.random() * 1}`,
 			...enteredExpenseData,
 		};
-		props.onAddExpense(expenseData);
+		await addDoc(expensesCollectionRef, { ...expenseData });
+		props.onAddExpense({ ...expenseData });
 	};
 
 	useEffect(() => {

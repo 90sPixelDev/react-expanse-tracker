@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Card from '../UI/Card';
 import ExpenseFilter from './ExpensesFilter';
@@ -36,7 +36,7 @@ const Expenses = (props) => {
 					year={filteredYear}
 				/>
 			</div>
-			<ExpensesList items={filteredExpenses} />
+			<ExpensesList expenses={filteredExpenses} />
 			<div className={classes.bottom}>
 				<ExpensesBottom />
 			</div>
@@ -45,7 +45,8 @@ const Expenses = (props) => {
 };
 
 Expenses.propTypes = {
-	items: PropTypes.array,
+	items: PropTypes.any,
+	data: PropTypes.any,
 };
 
 export default Expenses;
