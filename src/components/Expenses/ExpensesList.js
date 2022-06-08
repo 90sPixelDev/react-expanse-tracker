@@ -23,12 +23,14 @@ const ExpensesList = (props) => {
 			<ExpenseItem
 				key={expense.id}
 				title={expense.title}
-				amount={expense.amt}
-				date={expense.date}
+				amount={parseFloat(expense.amt)}
+				date={expense.date.toDate()}
 				category={expense.cat}
 			/>
 		));
 	}
+
+	console.log(props.items);
 
 	return (
 		<ul className={classes.expenses} ref={expensesParentRef}>

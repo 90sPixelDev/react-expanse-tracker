@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Expenses from '../Expenses/Expenses';
 import NewExpense from '../NewExpense/NewExpense';
+import PropTypes from 'prop-types';
 import Stats from '../stats/Stats';
 
 const LoggedIn = (props) => {
@@ -14,13 +15,13 @@ const LoggedIn = (props) => {
 		// },
 	];
 
-	const [expenses, setExpenses] = useState(initExpenses);
+	const [expenses, setExpenses] = useState(props.expenses.data);
 
 	const addExpenseHandler = (createdExpense) => {
-		console.log(createdExpense);
-		setExpenses((prevState) => {
-			return [createdExpense, ...prevState];
-		});
+		// console.log(createdExpense);
+		// setExpenses((prevState) => {
+		// 	return [createdExpense, ...prevState];
+		// });
 	};
 
 	return (
@@ -30,6 +31,11 @@ const LoggedIn = (props) => {
 			<Expenses items={expenses} />
 		</>
 	);
+};
+
+LoggedIn.propTypes = {
+	data: PropTypes.object,
+	expenses: PropTypes.object,
 };
 
 export default LoggedIn;
