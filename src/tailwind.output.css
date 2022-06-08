@@ -555,11 +555,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-\[100px\]{
   height: 100px;
 }
+.h-\[60px\]{
+  height: 60px;
+}
 .h-\[100vh\]{
   height: 100vh;
 }
-.h-\[50px\]{
-  height: 50px;
+.h-\[25px\]{
+  height: 25px;
 }
 .min-h-\[30vh\]{
   min-height: 30vh;
@@ -618,6 +621,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-\[100vw\]{
   width: 100vw;
 }
+.w-\[25px\]{
+  width: 25px;
+}
+.w-fit{
+  width: fit-content;
+}
 .min-w-\[300px\]{
   min-width: 300px;
 }
@@ -650,6 +659,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .place-items-center{
   place-items: center;
+}
+.items-start{
+  align-items: flex-start;
 }
 .items-end{
   align-items: flex-end;
@@ -689,6 +701,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .overflow-auto{
   overflow: auto;
+}
+.overflow-hidden{
+  overflow: hidden;
 }
 .overflow-x-auto{
   overflow-x: auto;
@@ -859,6 +874,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
+.text-\[12px\]{
+  font-size: 12px;
+}
 .font-bold{
   font-weight: 700;
 }
@@ -900,6 +918,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .duration-500{
   transition-duration: 500ms;
+}
+.duration-1000{
+  transition-duration: 1000ms;
 }
 .ease-out{
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);

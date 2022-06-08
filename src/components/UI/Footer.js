@@ -1,10 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-	solid,
-	regular,
-	brands,
-} from '@fortawesome/fontawesome-svg-core/import.macro';
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => {
@@ -14,7 +10,7 @@ const Footer = () => {
 		row: 'flex flex-row justify-center',
 		text: 'text-white mx-auto text-center mx-2 text-sm',
 		links: 'text-white mx-auto text-center mx-2 text-sm underline decoration-solid',
-		icon: 'my-auto',
+		icon: 'my-auto text-white',
 	};
 
 	const gitHubIcon = (

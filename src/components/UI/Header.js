@@ -5,13 +5,14 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 const Header = () => {
 	const classes = {
-		header: 'w-full h-full bg-gray-500',
+		header: 'w-full h-[60px] bg-gray-500',
 		menu: 'h-full',
 		listParent: 'flex h-full justify-evenly items-center',
 		listItem: 'text-white w-[33%] text-center py-3',
 		listLog: 'w-[33%] text-center py-3',
-		listProfile: 'w-[50%] text-center py-3',
-		loading: 'text-white',
+		listProfile:
+			'w-[50%] h-full text-center py-3 flex flex-row justify-center items-start',
+		loading: 'text-white flow-root my-auto',
 	};
 	const { isAuthenticated } = useAuth0();
 
