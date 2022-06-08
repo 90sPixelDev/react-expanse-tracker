@@ -621,6 +621,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-\[100vw\]{
   width: 100vw;
 }
+.w-\[25px\]{
+  width: 25px;
+}
 .w-fit{
   width: fit-content;
 }

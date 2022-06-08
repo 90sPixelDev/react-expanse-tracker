@@ -18,7 +18,7 @@ const App = (props) => {
 			);
 		};
 
-		// getExpenses();
+		getExpenses();
 	}, []);
 
 	return (
