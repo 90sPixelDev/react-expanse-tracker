@@ -16,9 +16,9 @@ const App = (props) => {
 			setExpenses(
 				data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
 			);
-			console.log(data);
 		};
-		getExpenses();
+
+		// getExpenses();
 	}, []);
 
 	return (

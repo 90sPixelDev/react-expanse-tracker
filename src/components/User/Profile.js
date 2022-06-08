@@ -7,14 +7,13 @@ const Profile = () => {
 		holder: 'bg-gray-100 rounded-lg p-2 items-center',
 		parent: 'flex flex-col',
 		loading: 'bg-gray-100 rounded-lg p-2',
-		pic: 'rounded-full h-[25px] w-fit flow-root mx-auto',
+		pic: 'rounded-full h-[25px] w-[25px] w-fit flow-root mx-auto',
 		name: 'text-[12px]',
 		email: 'text-[12px]',
 	};
 
 	const { user, isLoading } = useAuth0();
 	const [showProfile, setShowProfile] = useState(false);
-	// const showProfile = false;
 
 	if (isLoading) {
 		return <div className={classes.loading}>Loading ...</div>;

@@ -30,8 +30,6 @@ const ExpensesList = (props) => {
 		));
 	}
 
-	console.log(props.items);
-
 	return (
 		<ul className={classes.expenses} ref={expensesParentRef}>
 			{expensesContent}
