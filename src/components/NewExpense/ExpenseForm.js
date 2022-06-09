@@ -40,11 +40,22 @@ const ExpenseForm = (props) => {
 			return;
 		}
 
+		let cat;
+		if (
+			enteredCat === '' ||
+			enteredCat === null ||
+			enteredCat === undefined
+		) {
+			cat = 'Other';
+		} else {
+			cat = enteredCat;
+		}
+
 		const expenseData = {
 			title: enteredTitle,
 			amt: parseFloat(enteredAmt),
 			date: new Date(enteredDate),
-			cat: enteredCat,
+			cat: cat,
 		};
 
 		props.onNewExpenseData(expenseData);
@@ -83,7 +94,7 @@ const ExpenseForm = (props) => {
 							className={classes.input}
 							type='date'
 							min='2019-01-01'
-							max='2022-06-01'
+							max='2023-01-01'
 							name='expense-date'
 							ref={enteredDateRef}
 						/>

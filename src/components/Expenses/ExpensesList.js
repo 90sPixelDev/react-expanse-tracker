@@ -18,10 +18,8 @@ const ExpensesList = (props) => {
 		<p className={classes.noContent}>No expenses found.</p>
 	);
 
-	console.log(props.expenses);
-
 	if (props.expenses && props.expenses.length > 0) {
-		expensesContent = props.expenses.map((expense) => (
+		expensesContent = props.expenses?.map((expense) => (
 			<ExpenseItem
 				key={expense.id}
 				title={expense.title}

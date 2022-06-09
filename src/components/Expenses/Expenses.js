@@ -18,7 +18,7 @@ const Expenses = (props) => {
 		setFilteredYear(yearSelected);
 	};
 
-	const filteredExpenses = props.items.filter((expense) => {
+	const filteredExpenses = props.items?.filter((expense) => {
 		if (filteredYear === 'All') {
 			return expense;
 		} else
