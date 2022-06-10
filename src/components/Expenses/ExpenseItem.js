@@ -13,10 +13,10 @@ const ExpenseItem = (props) => {
 		expenseTitle:
 			'text-gray-700 group-hover:text-black font-bold text-[4vw] xsm:text-xl sm:text-2xl my-auto p-3',
 		expenseAmt:
-			'bg-white w-[150px] text-center p-3 rounded-3xl border-2 border-gray-200',
+			'bg-white w-fit min-w-[100px] text-center p-3 rounded-3xl border-2 border-gray-200',
 		expenseAmtText: 'text-[4vw] xsm:text-xl',
 		end: 'flex flex-row gap-4',
-		button: 'bg-white w-full h-8 rounded-tr-full border-2 sm:hover:bg-red-200',
+		xButton: 'bg-white w-full min-w-[20px] h-[30%] rounded-tr-full border-2 sm:hover:bg-red-200',
 		category: 'text-center w-[100%] rounded-b-full col-span-3',
 	};
 
@@ -85,7 +85,7 @@ const ExpenseItem = (props) => {
 				</div>
 			</div>
 			<button
-				className={classes.button}
+				className={classes.xButton}
 				onClick={deleteExpenseHandler}
 			>
 				x

@@ -29,7 +29,7 @@ const LoggedIn = (props) => {
 	};
 
 	useEffect(() => {
-		getExpenses();
+		// getExpenses();
 	}, [, update]);
 
 	return (

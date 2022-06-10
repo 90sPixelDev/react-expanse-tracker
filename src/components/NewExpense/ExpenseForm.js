@@ -9,7 +9,7 @@ const ExpenseForm = (props) => {
 		controlParent: 'm-auto sm:p-1',
 		label: 'flow-root text-center text-sm sm:text-base',
 		input: 'w-[5em] sm:w-[8em] rounded-md p-1 border-2 border-gray-300',
-		buttons: 'flex flex-row my-2',
+		buttons: 'flex flex-row mt-2 mb-6',
 		new: 'bg-white sm:hover:bg-gray-200 p-1 rounded-lg m-auto sm:p-2',
 		submit: 'bg-green-200 sm:hover:bg-green-400 p-1 rounded-lg m-auto sm:p-2',
 		cancel: 'bg-red-200 sm:hover:bg-red-400 p-1 rounded-lg m-auto sm:p-2',

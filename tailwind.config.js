@@ -13,7 +13,7 @@ module.exports = {
 				expenseItem: '80%, 20%',
 			},
 			gridTemplateColumns: {
-				expenseItem: '95%, 5%',
+				expenseItem: '90%, 10%',
 			},
 			animation: {
 				fadeIn: 'fadeIn 1s backwards',
