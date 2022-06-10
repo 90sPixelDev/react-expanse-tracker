@@ -10,14 +10,16 @@ const App = (props) => {
 	};
 
 	return (
-		<Wrapper>
+		<>
 			<Header />
-			<AuthScreen
-				data={props}
-				onFinalUpdate={refreshExpensesHandler}
-			/>
-			<Footer />
-		</Wrapper>
+			<Wrapper>
+				<AuthScreen
+					data={props}
+					onFinalUpdate={refreshExpensesHandler}
+				/>
+				<Footer />
+			</Wrapper>
+		</>
 	);
 };
 

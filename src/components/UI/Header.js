@@ -6,7 +6,7 @@ import Loading from '../animations/Loading';
 
 const Header = () => {
 	const classes = {
-		header: 'w-full h-[60px] bg-gray-500',
+		header: 'absolute top-0 w-full h-[60px] bg-gray-500 z-10',
 		menu: 'h-full',
 		listParent: 'flex h-full justify-evenly items-center',
 		listItem: 'text-white w-[33%] text-center py-3',
