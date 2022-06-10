@@ -15,10 +15,6 @@ const Profile = () => {
 	const { user, isLoading } = useAuth0();
 	const [showProfile, setShowProfile] = useState(false);
 
-	if (isLoading) {
-		return <div className={classes.loading}>Loading ...</div>;
-	}
-
 	return (
 		<>
 			<button

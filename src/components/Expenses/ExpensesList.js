@@ -18,14 +18,20 @@ const ExpensesList = (props) => {
 		<p className={classes.noContent}>No expenses found.</p>
 	);
 
+	const deleteItemHandler = (expID) => {
+		props.deleteExpense(expID);
+	};
+
 	if (props.expenses && props.expenses.length > 0) {
 		expensesContent = props.expenses?.map((expense) => (
 			<ExpenseItem
 				key={expense.id}
+				id={expense.id}
 				title={expense.title}
 				amount={parseFloat(expense.amt)}
 				date={expense.date.toDate()}
 				category={expense.cat}
+				onDeleteExpense={deleteItemHandler}
 			/>
 		));
 	}
@@ -39,6 +45,7 @@ const ExpensesList = (props) => {
 
 ExpensesList.propTypes = {
 	expenses: PropTypes.any,
+	deleteExpense: PropTypes.func,
 };
 
 export default ExpensesList;

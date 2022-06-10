@@ -7,7 +7,7 @@ const ExpenseItem = (props) => {
 
 	const classes = {
 		expenseParent:
-			'w-[90%] group bg-red-50 sm:hover:scale-105 sm:hover:shadow-gray-800/100 shadow-lg shadow- transition-all ease-in-out pb-[.025em] rounded-[2em]',
+			'w-[90%] group bg-red-50 sm:hover:scale-105 sm:hover:shadow-gray-800/100 shadow-lg transition-all ease-in-out pb-[.025em] rounded-[2em] grid grid-rows-expenseItem grid-cols-expenseItem',
 		spacing: 'flex items-center justify-between mx-4 my-2',
 		flexLayout: 'inline-flex w-100',
 		expenseTitle:
@@ -15,7 +15,9 @@ const ExpenseItem = (props) => {
 		expenseAmt:
 			'bg-white w-[150px] text-center p-3 rounded-3xl border-2 border-gray-200',
 		expenseAmtText: 'text-[4vw] xsm:text-xl',
-		category: 'text-center w-[100%] rounded-b-full',
+		end: 'flex flex-row gap-4',
+		button: 'bg-white w-full h-8 rounded-tr-full border-2 sm:hover:bg-red-200',
+		category: 'text-center w-[100%] rounded-b-full col-span-3',
 	};
 
 	let cateoryStyle = { backgroundColor: 'rgb(255, 255, 255)' };
@@ -63,6 +65,10 @@ const ExpenseItem = (props) => {
 			break;
 	}
 
+	const deleteExpenseHandler = () => {
+		props.onDeleteExpense(props.id);
+	};
+
 	return (
 		<li className={classes.expenseParent} style={cateoryStyle}>
 			<div className={classes.spacing}>
@@ -70,12 +76,20 @@ const ExpenseItem = (props) => {
 					<ExpenseDate date={props.date} />
 					<p className={classes.expenseTitle}>{title}</p>
 				</div>
-				<div className={classes.expenseAmt}>
-					<p className={classes.expenseAmtText}>
-						${props.amount}
-					</p>
+				<div className={classes.end}>
+					<div className={classes.expenseAmt}>
+						<p className={classes.expenseAmtText}>
+							${props.amount}
+						</p>
+					</div>
 				</div>
 			</div>
+			<button
+				className={classes.button}
+				onClick={deleteExpenseHandler}
+			>
+				x
+			</button>
 			<p className={classes.category} style={bg}>
 				{props.category}
 			</p>
@@ -88,6 +102,9 @@ ExpenseItem.propTypes = {
 	date: PropTypes.instanceOf(Date),
 	amount: PropTypes.number,
 	category: PropTypes.string,
+	onDeleteExpense: PropTypes.func,
+	id: PropTypes.string,
+	getKey: PropTypes.func,
 };
 
 export default ExpenseItem;

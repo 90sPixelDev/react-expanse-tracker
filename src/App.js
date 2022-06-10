@@ -3,25 +3,8 @@ import Wrapper from './components/UI/Wrapper';
 import Header from './components/UI/Header';
 import Footer from './components/UI/Footer';
 import AuthScreen from './components/Auth/AuthScreen';
-import { db } from './firebase.config';
-import { collection, getDocs } from 'firebase/firestore';
 
 const App = (props) => {
-	const [expenses, setExpenses] = useState([{}]);
-	const expensesCollectionRef = collection(db, 'expenses');
-	const [update, setUpdate] = useState(false);
-
-	useEffect(() => {
-		const getExpenses = async () => {
-			const data = await getDocs(expensesCollectionRef);
-			setExpenses(
-				data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-			);
-		};
-
-		getExpenses();
-	}, [, update]);
-
 	const refreshExpensesHandler = () => {
 		setUpdate((prevState) => !prevState);
 	};
@@ -30,7 +13,7 @@ const App = (props) => {
 		<Wrapper>
 			<Header />
 			<AuthScreen
-				data={expenses}
+				data={props}
 				onFinalUpdate={refreshExpensesHandler}
 			/>
 			<Footer />

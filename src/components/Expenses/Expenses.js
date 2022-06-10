@@ -28,6 +28,10 @@ const Expenses = (props) => {
 			);
 	});
 
+	const finalOnDeleteExpense = (expID) => {
+		props.onDeleteExpense(expID);
+	};
+
 	return (
 		<Card className={classes.card}>
 			<div className={classes.top}>
@@ -36,7 +40,10 @@ const Expenses = (props) => {
 					year={filteredYear}
 				/>
 			</div>
-			<ExpensesList expenses={filteredExpenses} />
+			<ExpensesList
+				expenses={filteredExpenses}
+				deleteExpense={finalOnDeleteExpense}
+			/>
 			<div className={classes.bottom}>
 				<ExpensesBottom />
 			</div>
@@ -45,8 +52,9 @@ const Expenses = (props) => {
 };
 
 Expenses.propTypes = {
-	items: PropTypes.any,
-	data: PropTypes.any,
+	items: PropTypes.array,
+	data: PropTypes.array,
+	onDeleteExpense: PropTypes.func,
 };
 
 export default Expenses;

@@ -2,6 +2,7 @@ import React from 'react';
 import Profile from '../User/Profile';
 import AuthBtn from '../Auth/AuthBtn';
 import { useAuth0 } from '@auth0/auth0-react';
+import Loading from '../animations/Loading';
 
 const Header = () => {
 	const classes = {
@@ -16,7 +17,7 @@ const Header = () => {
 	};
 	const { isAuthenticated } = useAuth0();
 
-	const loading = <div className={classes.loading}>No User Available</div>;
+	const loading = <Loading color={'white'} size={25} />;
 
 	return (
 		<header className={classes.header}>

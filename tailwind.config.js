@@ -10,6 +10,10 @@ module.exports = {
 			gridTemplateRows: {
 				layout: '50px, minmax(min-content, fit-content), minmax(min-content, fit-content), minmax(500px, auto-fill)',
 				stats: '1fr 3.5fr',
+				expenseItem: '80%, 20%',
+			},
+			gridTemplateColumns: {
+				expenseItem: '95%, 5%',
 			},
 			animation: {
 				fadeIn: 'fadeIn 1s backwards',
