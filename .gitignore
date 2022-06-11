@@ -13,6 +13,7 @@
 
 # sensitive
 .env
+min-expense-firebase-adminsdk-fhker-40dd8b48a7.json
 
 # misc
 .DS_Store

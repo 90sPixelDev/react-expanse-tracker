@@ -16,13 +16,13 @@ const NewExpense = (props) => {
 	const [revealedForm, setRevealedForm] = useState(false);
 	const animParent = useRef(null);
 
-	const expensesCollectionRef = collection(db, 'expenses');
+	const userExpensesCollRef = collection(db, props.user.uid);
 
 	const newExpenseData = async (enteredExpenseData) => {
 		const expenseData = {
 			...enteredExpenseData,
 		};
-		await addDoc(expensesCollectionRef, { ...expenseData });
+		await addDoc(userExpensesCollRef, { ...expenseData });
 		props.onAddExpense({ ...expenseData });
 	};
 
@@ -71,6 +71,7 @@ const NewExpense = (props) => {
 
 NewExpense.propTypes = {
 	onAddExpense: PropTypes.func,
+	user: PropTypes.object,
 };
 
 export default NewExpense;

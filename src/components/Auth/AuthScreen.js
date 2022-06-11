@@ -1,39 +1,30 @@
-import React from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import LoggedIn from './LoggedIn';
 import Loading from '../animations/Loading';
+import { UserIDCon } from '../Auth/UserIDContext';
 
 const AuthScreen = (props) => {
-	const { user, isAuthenticated, isLoading } = useAuth0();
+	const [isLoading, setIsLoading] = useState(true);
 
-	const loggedOut = (
-		<div>
-			<h2>Please Log In to access features!</h2>
-		</div>
-	);
-
-	if (isLoading) {
-		return <Loading color={'gray'} size={56} />;
-	}
+	// if (isLoading) {
+	// 	return <Loading color={'gray'} size={56} />;
+	// }
 
 	const updatingDataHandler = (expense) => {
 		props.onFinalUpdate(expense);
 	};
 
-	console.log(user);
-
 	return (
-		<>
-			{isAuthenticated ? (
+		<UserIDCon.Consumer>
+			{(value) => (
 				<LoggedIn
 					expenses={props.data}
+					value={value}
 					onUpdateData={updatingDataHandler}
 				/>
-			) : (
-				loggedOut
 			)}
-		</>
+		</UserIDCon.Consumer>
 	);
 };
 

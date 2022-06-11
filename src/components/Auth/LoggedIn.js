@@ -10,6 +10,7 @@ import Loading from '.././animations/Loading';
 const LoggedIn = (props) => {
 	const [expenses, setExpenses] = useState([{}]);
 	const expensesCollectionRef = collection(db, 'expenses');
+	const userCollectionRef = collection(db, props.value.uid);
 	const [update, setUpdate] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
 
@@ -18,8 +19,15 @@ const LoggedIn = (props) => {
 	};
 
 	const getExpenses = async () => {
-		const data = await getDocs(expensesCollectionRef);
-		setExpenses(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+		// const data = await getDocs(expensesCollectionRef);
+		// setExpenses(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+		// setTimeout(() => setIsLoading(false), 1000);
+		const data = await getDocs(userCollectionRef);
+		!data
+			? console.log('No Data Found.')
+			: setExpenses(
+					data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+			  );
 		setTimeout(() => setIsLoading(false), 1000);
 	};
 
@@ -29,12 +37,12 @@ const LoggedIn = (props) => {
 	};
 
 	useEffect(() => {
-		// getExpenses();
+		getExpenses();
 	}, [, update]);
 
 	return (
 		<>
-			<NewExpense onAddExpense={refreshExpenses} />
+			<NewExpense onAddExpense={refreshExpenses} user={props.value} />
 			{isLoading && <Loading color={'gray'} size={56} />}
 			{!isLoading && <Stats data={expenses}></Stats>}
 			{!isLoading && (
@@ -50,6 +58,7 @@ const LoggedIn = (props) => {
 LoggedIn.propTypes = {
 	expenses: PropTypes.object,
 	onUpdateData: PropTypes.func,
+	value: PropTypes.object,
 };
 
 export default LoggedIn;
