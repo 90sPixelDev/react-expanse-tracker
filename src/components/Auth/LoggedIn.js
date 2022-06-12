@@ -19,9 +19,6 @@ const LoggedIn = (props) => {
 	};
 
 	const getExpenses = async () => {
-		// const data = await getDocs(expensesCollectionRef);
-		// setExpenses(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-		// setTimeout(() => setIsLoading(false), 1000);
 		const data = await getDocs(userCollectionRef);
 		!data
 			? console.log('No Data Found.')
