@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Transition } from '@headlessui/react';
-import { useAuth0 } from '@auth0/auth0-react';
 
 const Profile = () => {
 	const classes = {
@@ -12,7 +11,6 @@ const Profile = () => {
 		email: 'text-[12px]',
 	};
 
-	const { user, isLoading } = useAuth0();
 	const [showProfile, setShowProfile] = useState(false);
 
 	return (

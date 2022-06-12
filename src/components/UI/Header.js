@@ -1,7 +1,6 @@
 import React from 'react';
 import Profile from '../User/Profile';
 import AuthBtn from '../Auth/AuthBtn';
-import { useAuth0 } from '@auth0/auth0-react';
 import Loading from '../animations/Loading';
 
 const Header = () => {
@@ -15,7 +14,6 @@ const Header = () => {
 			'w-[50%] h-full text-center py-3 flex flex-row justify-center items-start',
 		loading: 'text-white flow-root my-auto',
 	};
-	const { isAuthenticated } = useAuth0();
 
 	const loading = <Loading color={'white'} size={25} />;
 
@@ -25,7 +23,7 @@ const Header = () => {
 				<ul className={classes.listParent}>
 					<li className={classes.listItem}>MinExpense</li>
 					<li className={classes.listProfile}>
-						{isAuthenticated ? <Profile /> : loading}
+						{/* {isAuthenticated ? <Profile /> : loading} */}
 					</li>
 					<li className={classes.listLog}>
 						<AuthBtn />
