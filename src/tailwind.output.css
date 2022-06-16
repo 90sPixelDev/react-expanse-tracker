@@ -714,11 +714,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .justify-evenly{
   justify-content: space-evenly;
 }
-.gap-1{
-  gap: 0.25rem;
-}
 .gap-4{
   gap: 1rem;
+}
+.gap-1{
+  gap: 0.25rem;
 }
 .gap-2{
   gap: 0.5rem;
@@ -738,6 +738,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .overflow-y-auto{
   overflow-y: auto;
 }
+.rounded-md{
+  border-radius: 0.375rem;
+}
 .rounded-lg{
   border-radius: 0.5rem;
 }
@@ -752,9 +755,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .rounded-3xl{
   border-radius: 1.5rem;
-}
-.rounded-md{
-  border-radius: 0.375rem;
 }
 .rounded-b-full{
   border-bottom-right-radius: 9999px;
@@ -775,6 +775,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .rounded-tr-full{
   border-top-right-radius: 9999px;
 }
+.border-\[1px\]{
+  border-width: 1px;
+}
 .border-2{
   border-width: 2px;
 }
@@ -784,6 +787,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .border-b-\[1px\]{
   border-bottom-width: 1px;
+}
+.border-green-600{
+  --tw-border-opacity: 1;
+  border-color: rgb(22 163 74 / var(--tw-border-opacity));
+}
+.border-gray-800{
+  --tw-border-opacity: 1;
+  border-color: rgb(31 41 55 / var(--tw-border-opacity));
 }
 .border-gray-300{
   --tw-border-opacity: 1;
@@ -804,6 +815,26 @@ Ensure the default browser behavior of the `hidden` attribute.
 .border-gray-500{
   --tw-border-opacity: 1;
   border-color: rgb(107 114 128 / var(--tw-border-opacity));
+}
+.bg-green-100{
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 252 231 / var(--tw-bg-opacity));
+}
+.bg-green-500{
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 197 94 / var(--tw-bg-opacity));
+}
+.bg-gray-700{
+  --tw-bg-opacity: 1;
+  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+}
+.bg-red-200{
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
+}
+.bg-gray-200{
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 .bg-white{
   --tw-bg-opacity: 1;
@@ -828,14 +859,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-green-200{
   --tw-bg-opacity: 1;
   background-color: rgb(187 247 208 / var(--tw-bg-opacity));
-}
-.bg-red-200{
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
-}
-.bg-green-500{
-  --tw-bg-opacity: 1;
-  background-color: rgb(34 197 94 / var(--tw-bg-opacity));
 }
 .bg-gray-500{
   --tw-bg-opacity: 1;
@@ -865,14 +888,21 @@ Ensure the default browser behavior of the `hidden` attribute.
 .to-white{
   --tw-gradient-to: #fff;
 }
-.p-3{
-  padding: 0.75rem;
-}
 .p-1{
   padding: 0.25rem;
 }
+.p-4{
+  padding: 1rem;
+}
+.p-3{
+  padding: 0.75rem;
+}
 .p-2{
   padding: 0.5rem;
+}
+.px-2{
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 .py-1{
   padding-top: 0.25rem;
@@ -881,10 +911,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .py-3{
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-}
-.px-2{
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
 }
 .py-2{
   padding-top: 0.5rem;
@@ -917,6 +943,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .font-bold{
   font-weight: 700;
 }
+.text-white{
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
 .text-black{
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
@@ -924,10 +954,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-gray-700{
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity));
-}
-.text-white{
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 .underline{
   text-decoration-line: underline;
@@ -949,13 +975,13 @@ Ensure the default browser behavior of the `hidden` attribute.
 .filter{
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
-.transition-all{
-  transition-property: all;
+.transition{
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
-.transition{
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+.transition-all{
+  transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -994,6 +1020,14 @@ body,
 	top: 0;
 	left: 0;
 	z-index: 2;
+}
+.hover\:bg-green-300:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(134 239 172 / var(--tw-bg-opacity));
+}
+.hover\:bg-red-300:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
 }
 .hover\:bg-red-400:hover{
   --tw-bg-opacity: 1;
@@ -1073,6 +1107,16 @@ body,
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
+  .sm\:hover\:bg-green-400:hover{
+    --tw-bg-opacity: 1;
+    background-color: rgb(74 222 128 / var(--tw-bg-opacity));
+  }
+
+  .sm\:hover\:bg-gray-600:hover{
+    --tw-bg-opacity: 1;
+    background-color: rgb(75 85 99 / var(--tw-bg-opacity));
+  }
+
   .sm\:hover\:bg-red-200:hover{
     --tw-bg-opacity: 1;
     background-color: rgb(254 202 202 / var(--tw-bg-opacity));
@@ -1081,11 +1125,6 @@ body,
   .sm\:hover\:bg-gray-200:hover{
     --tw-bg-opacity: 1;
     background-color: rgb(229 231 235 / var(--tw-bg-opacity));
-  }
-
-  .sm\:hover\:bg-green-400:hover{
-    --tw-bg-opacity: 1;
-    background-color: rgb(74 222 128 / var(--tw-bg-opacity));
   }
 
   .sm\:hover\:bg-red-400:hover{

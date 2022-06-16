@@ -9,7 +9,6 @@ import Loading from '.././animations/Loading';
 
 const LoggedIn = (props) => {
 	const [expenses, setExpenses] = useState([{}]);
-	const expensesCollectionRef = collection(db, 'expenses');
 	const userCollectionRef = collection(db, props.value.uid);
 	const [update, setUpdate] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
@@ -29,12 +28,13 @@ const LoggedIn = (props) => {
 	};
 
 	const deleteExpense = async (expID) => {
-		await deleteDoc(doc(expensesCollectionRef, expID));
+		console.log(expID);
+		await deleteDoc(doc(userCollectionRef, expID));
 		refreshExpenses();
 	};
 
 	useEffect(() => {
-		getExpenses();
+		// getExpenses();
 	}, [, update]);
 
 	return (

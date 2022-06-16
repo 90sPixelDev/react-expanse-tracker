@@ -13,17 +13,33 @@ import SignFormParent from './components/Auth/SignFormParent';
 import SignUpForm from './components/Auth/SignUpForm';
 import LogInForm from './components/Auth/LogInForm';
 import { UserIDCon } from './components/Auth/UserIDContext';
+import GuestLogInForm from './components/Auth/GuestLogInForm';
 
 const App = (props) => {
+	const classes = {
+		or: 'text-center',
+	};
+
 	const [validUser, setValidUser] = useState(false);
 	const [isNewUser, setIsNewUser] = useState(true);
+	const [isGuest, setIsGuest] = useState(true);
 
 	const refreshExpensesHandler = () => {
 		setUpdate((prevState) => !prevState);
 	};
 
+	const GuestLogIn = async () => {
+		signInWithEmailAndPassword(auth, 'test@gmail.com', 'tester')
+			.then((userCreds) => {
+				setValidUser(userCreds.user);
+			})
+			.catch((error) => {
+				const errCode = error.code;
+				const errMssg = error.message;
+				console.log(`${errCode}: ${errMssg}`);
+			});
+	};
 	const createAccount = async (userInfo) => {
-		console.log(userInfo);
 		createUserWithEmailAndPassword(
 			auth,
 			userInfo.email,
@@ -55,18 +71,44 @@ const App = (props) => {
 		setIsNewUser((prevState) => !prevState);
 	};
 
+	let authForm;
+
+	const authFormHandler = () => {
+		if (isNewUser) {
+			authForm = isGuest ? (
+				<GuestLogInForm onGuestLogIn={GuestLogIn} />
+			) : (
+				<SignUpForm
+					onUserSignedUp={createAccount}
+					onSwitchForm={changeFormHandler}
+				/>
+			);
+		} else if (!isNewUser) {
+			authForm = (
+				<LogInForm
+					onUserSignedIn={LogIntoAccount}
+					onSwitchForm={changeFormHandler}
+				/>
+			);
+		}
+		return authForm;
+	};
+
 	return (
 		<>
 			<Header />
 			<Wrapper>
 				{!validUser ? (
 					<SignFormParent props={props}>
-						{isNewUser ? (
+						<GuestLogInForm onGuestLogIn={GuestLogIn} />
+						<h2 className={classes.or}>Or</h2>
+						{isNewUser && (
 							<SignUpForm
 								onUserSignedUp={createAccount}
 								onSwitchForm={changeFormHandler}
 							/>
-						) : (
+						)}
+						{!isNewUser && (
 							<LogInForm
 								onUserSignedIn={LogIntoAccount}
 								onSwitchForm={changeFormHandler}
