@@ -18,6 +18,7 @@ import GuestLogInForm from './components/Auth/GuestLogInForm';
 const App = (props) => {
 	const classes = {
 		or: 'text-center',
+		testBtn: 'bg-red-300',
 	};
 
 	const [validUser, setValidUser] = useState(false);
@@ -68,23 +69,23 @@ const App = (props) => {
 	const changeFormHandler = () => {
 		console.log('Changing Form!');
 		setIsNewUser((prevState) => !prevState);
+		console.log(isNewUser);
 	};
 
 	return (
 		<>
-			<Header userInfo={validUser} />
+			<Header />
 			<Wrapper>
 				{!validUser ? (
 					<SignFormParent props={props}>
 						<GuestLogInForm onGuestLogIn={GuestLogIn} />
 						<h2 className={classes.or}>Or</h2>
-						{isNewUser && (
+						{isNewUser ? (
 							<SignUpForm
 								onUserSignedUp={createAccount}
 								onSwitchForm={changeFormHandler}
 							/>
-						)}
-						{!isNewUser && (
+						) : (
 							<LogInForm
 								onUserSignedIn={LogIntoAccount}
 								onSwitchForm={changeFormHandler}

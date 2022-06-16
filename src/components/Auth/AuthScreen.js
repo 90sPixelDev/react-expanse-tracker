@@ -5,12 +5,6 @@ import Loading from '../animations/Loading';
 import { UserIDCon } from '../Auth/UserIDContext';
 
 const AuthScreen = (props) => {
-	const [isLoading, setIsLoading] = useState(true);
-
-	// if (isLoading) {
-	// 	return <Loading color={'gray'} size={56} />;
-	// }
-
 	const updatingDataHandler = (expense) => {
 		props.onFinalUpdate(expense);
 	};

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Profile from '../User/Profile';
 import Loading from '../animations/Loading';
 import PropTypes from 'prop-types';
@@ -21,12 +21,14 @@ const Header = (props) => {
 	const loading = <Loading color={'black'} size={25} />;
 	const [userInfo, setUserInfo] = useState(loading);
 
-	onAuthStateChanged(auth, (user) => {
-		if (user) {
-			setUserInfo(user.email);
-		} else {
-			setUserInfo('No User Signed In');
-		}
+	useEffect(() => {
+		onAuthStateChanged(auth, (user) => {
+			if (user) {
+				setUserInfo(user.email);
+			} else {
+				setUserInfo('No User Signed In');
+			}
+		});
 	});
 
 	return (
