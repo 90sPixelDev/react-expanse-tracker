@@ -4,7 +4,7 @@ import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 const SignFormParent = (props, ref) => {
 	const classes = {
-		body: 'bg-gray-200 max-w-[250px] border-[1px] border-gray-300 rounded-lg p-4 flex flex-col gap-4',
+		body: 'bg-gray-200 max-w-[250px] border-[1px] border-gray-300 rounded-lg p-4 flex flex-col gap-4 shadow-lg shadow-gray-400 my-8',
 	};
 
 	const [animParent] = useAutoAnimate();
