@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => {
 	const classes = {
@@ -13,6 +14,9 @@ const Footer = () => {
 		icon: 'my-auto text-white',
 	};
 
+	const linkedInIcon = (
+		<FontAwesomeIcon className={classes.icon} icon={faLinkedin} />
+	);
 	const gitHubIcon = (
 		<FontAwesomeIcon className={classes.icon} icon={faGithub} />
 	);
@@ -42,6 +46,17 @@ const Footer = () => {
 						rel='noreferrer'
 					>
 						My GitHub
+					</a>
+					<p className={classes.text}>|</p>
+
+					{linkedInIcon}
+					<a
+						className={classes.links}
+						href='https://www.linkedin.com/in/lien-font-developer/'
+						target='_blank'
+						rel='noreferrer'
+					>
+						LinkedIn
 					</a>
 				</div>
 				<p className={classes.text}>
