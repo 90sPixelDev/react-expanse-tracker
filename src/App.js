@@ -29,7 +29,7 @@ const App = (props) => {
 	};
 
 	const GuestLogIn = async () => {
-		signInWithEmailAndPassword(auth, 'test@gmail.com', 'tester')
+		signInWithEmailAndPassword(auth, 'preview@gmail.com', 'tester')
 			.then((userCreds) => {
 				setValidUser(userCreds.user);
 			})
@@ -62,14 +62,12 @@ const App = (props) => {
 			.catch((error) => {
 				const errCode = error.code;
 				const errMssg = error.message;
-				console.log(`${errCode}: ${errMssg}`);
+				console.log(`${errCode} | ${errMssg}`);
 			});
 	};
 
 	const changeFormHandler = () => {
-		console.log('Changing Form!');
 		setIsNewUser((prevState) => !prevState);
-		console.log(isNewUser);
 	};
 
 	return (
