@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 import Stats from '../stats/Stats';
 import { db } from '../../firebase.config';
 import { collection, getDocs, doc, deleteDoc } from 'firebase/firestore';
-import Loading from '.././animations/Loading';
+import Loading from '../animations/Loading';
 
-const LoggedIn = (props) => {
+const Authorized = (props) => {
 	const [expenses, setExpenses] = useState([{}]);
 	const userCollectionRef = collection(db, props.value.uid);
 	const [update, setUpdate] = useState(false);
@@ -34,7 +34,7 @@ const LoggedIn = (props) => {
 	};
 
 	useEffect(() => {
-		// getExpenses();
+		getExpenses();
 	}, [, update]);
 
 	return (
@@ -52,10 +52,10 @@ const LoggedIn = (props) => {
 	);
 };
 
-LoggedIn.propTypes = {
+Authorized.propTypes = {
 	expenses: PropTypes.object,
 	onUpdateData: PropTypes.func,
 	value: PropTypes.object,
 };
 
-export default LoggedIn;
+export default Authorized;

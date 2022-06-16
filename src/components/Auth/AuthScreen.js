@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import LoggedIn from './LoggedIn';
+import Authorized from './Authorized';
 import Loading from '../animations/Loading';
 import { UserIDCon } from '../Auth/UserIDContext';
 
@@ -18,7 +18,7 @@ const AuthScreen = (props) => {
 	return (
 		<UserIDCon.Consumer>
 			{(value) => (
-				<LoggedIn
+				<Authorized
 					expenses={props.data}
 					value={value}
 					onUpdateData={updatingDataHandler}

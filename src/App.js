@@ -22,7 +22,6 @@ const App = (props) => {
 
 	const [validUser, setValidUser] = useState(false);
 	const [isNewUser, setIsNewUser] = useState(true);
-	const [isGuest, setIsGuest] = useState(true);
 
 	const refreshExpensesHandler = () => {
 		setUpdate((prevState) => !prevState);
@@ -71,32 +70,9 @@ const App = (props) => {
 		setIsNewUser((prevState) => !prevState);
 	};
 
-	let authForm;
-
-	const authFormHandler = () => {
-		if (isNewUser) {
-			authForm = isGuest ? (
-				<GuestLogInForm onGuestLogIn={GuestLogIn} />
-			) : (
-				<SignUpForm
-					onUserSignedUp={createAccount}
-					onSwitchForm={changeFormHandler}
-				/>
-			);
-		} else if (!isNewUser) {
-			authForm = (
-				<LogInForm
-					onUserSignedIn={LogIntoAccount}
-					onSwitchForm={changeFormHandler}
-				/>
-			);
-		}
-		return authForm;
-	};
-
 	return (
 		<>
-			<Header />
+			<Header userInfo={validUser} />
 			<Wrapper>
 				{!validUser ? (
 					<SignFormParent props={props}>

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const SignUpForm = (props) => {
 	const classes = {
 		form: 'flex flex-col gap-4',
-		formTitle: 'mx-auto',
+		formTitle: 'mx-auto font-bold',
 		focus: 'bg-gray-300 flex flex-col gap-4 p-2 rounded-lg',
 		input: 'rounded-lg p-1',
 		signUpBtn:
