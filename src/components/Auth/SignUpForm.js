@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import EmailTextInput from '../SignForm/EmailTextInput';
 import PasswordTextInput from '../SignForm/PasswordTextInput';
@@ -50,35 +50,35 @@ const SignUpForm = (props) => {
 		value: '',
 		isValid: null,
 	});
+	const { value: emailValue, isValid: emailValid } = emailState;
+	const { value: passwordValue, isValid: passwordValid } = passwordState;
 
 	const changeName = (e) => {
 		setName(e.target.value);
 	};
 	const changeEmail = (e) => {
 		dispatchEmail({ type: 'USER_INPUT', val: e.target.value });
-
-		setFormIsValid(
-			passwordState.isValid &&
-				e.target.value.includes('@') &&
-				e.target.value.includes('.')
-		);
 	};
 	const changePassword = (e) => {
 		dispatchPassword({ type: 'USER_INPUT', val: e.target.value });
-
-		setFormIsValid(emailState.isValid && e.target.value.length > 5);
 	};
 
 	const submitUserInfo = (e) => {
 		e.preventDefault();
-		const email = emailState.value;
-		const password = passwordState.value;
-		const userInfo = { name, email, password };
+		const userInfo = { name, emailValue, passwordValue };
 		setName('');
-		dispatchEmail();
-		dispatchPassword();
 		props.onUserSignedUp(userInfo);
 	};
+
+	useEffect(() => {
+		const validateForm = setTimeout(() => {
+			setFormIsValid(emailValid && passwordValid);
+		}, 500);
+
+		return () => {
+			clearTimeout(validateForm);
+		};
+	}, [emailValid, passwordValid]);
 
 	const submitBtnType = () => {
 		const btnType = formIsValid ? (
@@ -110,11 +110,11 @@ const SignUpForm = (props) => {
 					required='required'
 				></input>
 				<EmailTextInput
-					emailValidity={emailState.isValid}
+					emailValidity={emailValid}
 					changeTheEmail={changeEmail}
 				/>
 				<PasswordTextInput
-					passwordValidity={passwordState.isValid}
+					passwordValidity={passwordValid}
 					changeThePassword={changePassword}
 				/>
 				{submitBtnType()}

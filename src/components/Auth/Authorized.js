@@ -9,7 +9,7 @@ import Loading from '../animations/Loading';
 
 const Authorized = (props) => {
 	const [expenses, setExpenses] = useState([{}]);
-	const userCollectionRef = collection(db, props.value.uid);
+	const userCollectionRef = collection(db, props.userValue.uid);
 	const [update, setUpdate] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
 
@@ -39,7 +39,10 @@ const Authorized = (props) => {
 
 	return (
 		<>
-			<NewExpense onAddExpense={refreshExpenses} user={props.value} />
+			<NewExpense
+				onAddExpense={refreshExpenses}
+				user={props.userValue}
+			/>
 			{isLoading && <Loading color={'gray'} size={56} />}
 			{!isLoading && <Stats data={expenses}></Stats>}
 			{!isLoading && (
@@ -55,7 +58,7 @@ const Authorized = (props) => {
 Authorized.propTypes = {
 	expenses: PropTypes.object,
 	onUpdateData: PropTypes.func,
-	value: PropTypes.object,
+	userValue: PropTypes.object,
 };
 
 export default Authorized;

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import ExpenseDate from './ExpenseDate';
 import PropTypes from 'prop-types';
+import { ItemToDelCon } from '../Context/item-to-delete-context';
 
 const ExpenseItem = (props) => {
 	const [title, setTitle] = useState(props.title);
+	// const [expToDelete, setExpToDelete] = useState();
 
 	const classes = {
 		expenseParent:
@@ -67,6 +69,7 @@ const ExpenseItem = (props) => {
 
 	const deleteExpenseHandler = () => {
 		props.onDeleteExpense(props.id);
+		// setExpToDelete(props.id);
 	};
 
 	return (

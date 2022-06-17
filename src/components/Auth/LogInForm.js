@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useReducer } from 'react';
+import React, { useState, useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import EmailTextInput from '../SignForm/EmailTextInput';
 import PasswordTextInput from '../SignForm/PasswordTextInput';
@@ -11,9 +11,8 @@ const emailReducer = (state, action) => {
 		};
 	}
 
-	return { value: '', isValid: false };
+	return { value: '', isValid: null };
 };
-
 const passwordReducer = (state, action) => {
 	if (action.type === 'USER_INPUT') {
 		return { value: action.val, isValid: action.val.length > 5 };
@@ -45,29 +44,30 @@ const LogInForm = (props) => {
 		value: '',
 		isValid: null,
 	});
+	const { value: emailValue, isValid: emailValid } = emailState;
+	const { value: passwordValue, isValid: passwordValid } = passwordState;
 
 	const changeEmail = (e) => {
 		dispatchEmail({ type: 'USER_INPUT', val: e.target.value });
-
-		setFormIsValid(
-			e.target.value.includes('@') &&
-				e.target.value.includes('.') &&
-				passwordState.isValid
-		);
 	};
 	const changePassword = (e) => {
 		dispatchPassword({ type: 'USER_INPUT', val: e.target.value });
-
-		setFormIsValid(emailState.isValid && e.target.value.length > 5);
 	};
+
+	useEffect(() => {
+		const validateForm = setTimeout(() => {
+			setFormIsValid(emailValid && passwordValid);
+		}, 500);
+
+		return () => {
+			clearTimeout(validateForm);
+		};
+	}, [emailValid, passwordValid]);
 
 	const userSignedIn = (e) => {
 		e.preventDefault();
-		const email = emailState.value;
-		const password = passwordState.value;
-		const userInfo = { email, password };
-		dispatchEmail();
-		dispatchPassword();
+
+		const userInfo = { emailValue, passwordValue };
 		props.onUserSignedIn(userInfo);
 	};
 
@@ -93,11 +93,11 @@ const LogInForm = (props) => {
 			<div className={classes.focus}>
 				<h2 className={classes.formTitle}>Log In</h2>
 				<EmailTextInput
-					emailValidity={emailState.isValid}
+					emailValidity={emailValid}
 					changeTheEmail={changeEmail}
 				/>
 				<PasswordTextInput
-					passwordValidity={passwordState.isValid}
+					passwordValidity={passwordValid}
 					changeThePassword={changePassword}
 				/>
 				{submitBtnType()}
