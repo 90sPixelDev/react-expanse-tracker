@@ -18,10 +18,6 @@ const ExpensesList = (props) => {
 		<p className={classes.noContent}>No expenses found.</p>
 	);
 
-	const deleteItemHandler = (expID) => {
-		props.deleteExpense(expID);
-	};
-
 	if (props.expenses && props.expenses.length > 0) {
 		expensesContent = props.expenses?.map((expense) => (
 			<ExpenseItem
@@ -31,7 +27,6 @@ const ExpensesList = (props) => {
 				amount={parseFloat(expense.amt)}
 				date={expense.date.toDate()}
 				category={expense.cat}
-				onDeleteExpense={deleteItemHandler}
 			/>
 		));
 	}

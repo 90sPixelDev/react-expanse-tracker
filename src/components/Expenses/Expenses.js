@@ -28,10 +28,6 @@ const Expenses = (props) => {
 			);
 	});
 
-	const finalOnDeleteExpense = (expID) => {
-		props.onDeleteExpense(expID);
-	};
-
 	return (
 		<Card className={classes.card}>
 			<div className={classes.top}>
@@ -40,10 +36,7 @@ const Expenses = (props) => {
 					year={filteredYear}
 				/>
 			</div>
-			<ExpensesList
-				expenses={filteredExpenses}
-				deleteExpense={finalOnDeleteExpense}
-			/>
+			<ExpensesList expenses={filteredExpenses} />
 			<div className={classes.bottom}>
 				<ExpensesBottom />
 			</div>
