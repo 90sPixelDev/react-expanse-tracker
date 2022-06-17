@@ -1,7 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import EmailTextInput from '../SignForm/EmailTextInput';
 import PasswordTextInput from '../SignForm/PasswordTextInput';
+
+const emailReducer = (state, action) => {
+	if (action.type === 'USER_INPUT') {
+		return {
+			value: action.val,
+			isValid: action.val.includes('@') && action.val.includes('.'),
+		};
+	}
+
+	return { value: '', isValid: false };
+};
+
+const passwordReducer = (state, action) => {
+	if (action.type === 'USER_INPUT') {
+		return { value: action.val, isValid: action.val.length > 5 };
+	}
+
+	return { value: '', isValid: null };
+};
 
 const LogInForm = (props) => {
 	const classes = {
@@ -17,56 +36,40 @@ const LogInForm = (props) => {
 		or: 'mx-auto',
 	};
 
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
 	const [formIsValid, setFormIsValid] = useState(false);
-	const [emailIsValid, setEmailIsValid] = useState(false);
-	const [passwordIsValid, setPasswordIsValid] = useState(false);
+	const [emailState, dispatchEmail] = useReducer(emailReducer, {
+		value: '',
+		isValid: null,
+	});
+	const [passwordState, dispatchPassword] = useReducer(passwordReducer, {
+		value: '',
+		isValid: null,
+	});
 
 	const changeEmail = (e) => {
-		setEmail(e.target.value);
+		dispatchEmail({ type: 'USER_INPUT', val: e.target.value });
+
+		setFormIsValid(
+			e.target.value.includes('@') &&
+				e.target.value.includes('.') &&
+				passwordState.isValid
+		);
 	};
 	const changePassword = (e) => {
-		setPassword(e.target.value);
+		dispatchPassword({ type: 'USER_INPUT', val: e.target.value });
+
+		setFormIsValid(emailState.isValid && e.target.value.length > 5);
 	};
 
 	const userSignedIn = (e) => {
 		e.preventDefault();
+		const email = emailState.value;
+		const password = passwordState.value;
 		const userInfo = { email, password };
-		setEmail('');
-		setPassword('');
+		dispatchEmail();
+		dispatchPassword();
 		props.onUserSignedIn(userInfo);
 	};
-
-	const validateEmail = () => {
-		if (email.includes('@') && email.includes('.')) {
-			setEmailIsValid(true);
-		} else {
-			setEmailIsValid(false);
-		}
-	};
-	const validatePassword = () => {
-		if (password.trim().length > 5) {
-			setPasswordIsValid(true);
-		} else {
-			setPasswordIsValid(false);
-		}
-	};
-
-	useEffect(() => {
-		const testValidity = setTimeout(() => {
-			console.log(`TESTED: ${formIsValid}`);
-
-			validateEmail();
-			validatePassword();
-
-			setFormIsValid(emailIsValid && passwordIsValid);
-		}, 500);
-
-		return () => {
-			clearTimeout(testValidity);
-		};
-	}, [email, password]);
 
 	const submitBtnType = () => {
 		const btnType = formIsValid ? (
@@ -90,11 +93,11 @@ const LogInForm = (props) => {
 			<div className={classes.focus}>
 				<h2 className={classes.formTitle}>Log In</h2>
 				<EmailTextInput
-					emailValidity={emailIsValid}
+					emailValidity={emailState.isValid}
 					changeTheEmail={changeEmail}
 				/>
 				<PasswordTextInput
-					passwordValidity={passwordIsValid}
+					passwordValidity={passwordState.isValid}
 					changeThePassword={changePassword}
 				/>
 				{submitBtnType()}

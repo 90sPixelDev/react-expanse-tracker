@@ -1,14 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import EmailTextInput from '../SignForm/EmailTextInput';
 import PasswordTextInput from '../SignForm/PasswordTextInput';
+
+const emailReducer = (state, action) => {
+	if (action.type === 'USER_INPUT') {
+		return {
+			value: action.val,
+			isValid: action.val.includes('@') && action.val.includes('.'),
+		};
+	}
+
+	return { value: '', isValid: null };
+};
+const passwordReducer = (state, action) => {
+	if (action.type === 'USER_INPUT') {
+		return {
+			value: action.val,
+			isValid: action.val.length > 5,
+		};
+	}
+
+	return { value: '', isValid: null };
+};
 
 const SignUpForm = (props) => {
 	const classes = {
 		form: 'flex flex-col gap-4',
 		formTitle: 'mx-auto font-bold',
 		focus: 'bg-gray-300 flex flex-col gap-4 p-2 rounded-lg',
-		input: 'rounded-lg p-1',
+		input: 'rounded-lg p-1 focus:bg-gray-100 ',
 		signUpBtn:
 			'bg-green-500 px-2 py-1 rounded-lg border-[1px] border-green-600 text-white sm:hover:bg-green-400 transition',
 		signUpDisabled:
@@ -19,63 +40,45 @@ const SignUpForm = (props) => {
 	};
 
 	const [name, setName] = useState('');
-	const [email, setEmail] = useState('');
-	const [emailIsValid, setEmailIsValid] = useState(false);
-	const [password, setPassword] = useState('');
-	const [passwordIsValid, setPasswordIsValid] = useState(false);
 	const [formIsValid, setFormIsValid] = useState(false);
+
+	const [emailState, dispatchEmail] = useReducer(emailReducer, {
+		value: '',
+		isValid: null,
+	});
+	const [passwordState, dispatchPassword] = useReducer(passwordReducer, {
+		value: '',
+		isValid: null,
+	});
 
 	const changeName = (e) => {
 		setName(e.target.value);
 	};
 	const changeEmail = (e) => {
-		setEmail(e.target.value);
+		dispatchEmail({ type: 'USER_INPUT', val: e.target.value });
+
+		setFormIsValid(
+			passwordState.isValid &&
+				e.target.value.includes('@') &&
+				e.target.value.includes('.')
+		);
 	};
 	const changePassword = (e) => {
-		setPassword(e.target.value);
+		dispatchPassword({ type: 'USER_INPUT', val: e.target.value });
+
+		setFormIsValid(emailState.isValid && e.target.value.length > 5);
 	};
 
 	const submitUserInfo = (e) => {
 		e.preventDefault();
+		const email = emailState.value;
+		const password = passwordState.value;
 		const userInfo = { name, email, password };
 		setName('');
-		setEmail('');
-		setPassword('');
+		dispatchEmail();
+		dispatchPassword();
 		props.onUserSignedUp(userInfo);
 	};
-
-	const validateEmail = () => {
-		if (email.includes('@') && email.includes('.')) {
-			setEmailIsValid(true);
-		} else {
-			setEmailIsValid(false);
-		}
-	};
-	const validatePassword = () => {
-		if (password.trim().length > 5) {
-			setPasswordIsValid(true);
-		} else {
-			setPasswordIsValid(false);
-		}
-	};
-
-	useEffect(() => {
-		const testValidity = setTimeout(() => {
-			console.log(`TESTED: ${formIsValid}`);
-			setFormIsValid(
-				email.includes('@') &&
-					email.includes('.') &&
-					password.trim().length > 5
-			);
-		}, 500);
-
-		validateEmail();
-		validatePassword();
-
-		return () => {
-			clearTimeout(testValidity);
-		};
-	}, [email, password, formIsValid]);
 
 	const submitBtnType = () => {
 		const btnType = formIsValid ? (
@@ -107,11 +110,11 @@ const SignUpForm = (props) => {
 					required='required'
 				></input>
 				<EmailTextInput
-					emailValidity={emailIsValid}
+					emailValidity={emailState.isValid}
 					changeTheEmail={changeEmail}
 				/>
 				<PasswordTextInput
-					passwordValidity={passwordIsValid}
+					passwordValidity={passwordState.isValid}
 					changeThePassword={changePassword}
 				/>
 				{submitBtnType()}
