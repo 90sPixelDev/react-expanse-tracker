@@ -62,17 +62,20 @@ const SignUpForm = (props) => {
 	useEffect(() => {
 		const testValidity = setTimeout(() => {
 			console.log(`TESTED: ${formIsValid}`);
-
-			validateEmail();
-			validatePassword();
-
-			setFormIsValid(emailIsValid && passwordIsValid);
+			setFormIsValid(
+				email.includes('@') &&
+					email.includes('.') &&
+					password.trim().length > 5
+			);
 		}, 500);
+
+		validateEmail();
+		validatePassword();
 
 		return () => {
 			clearTimeout(testValidity);
 		};
-	}, [email, password]);
+	}, [email, password, formIsValid]);
 
 	const submitBtnType = () => {
 		const btnType = formIsValid ? (
