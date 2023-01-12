@@ -5,7 +5,6 @@ import { ItemToDelCon } from '../Context/item-to-delete-context';
 
 const ExpenseItem = (props) => {
 	const [title, setTitle] = useState(props.title);
-	// const [expToDelete, setExpToDelete] = useState();
 
 	const classes = {
 		expenseParent:

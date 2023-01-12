@@ -31,7 +31,7 @@ const LogInForm = (props) => {
 		logInBtn:
 			'bg-gray-700 px-2 py-1 text-white rounded-lg border-[1px] border-gray-800 sm:hover:bg-gray-600 transition',
 		logInDisabled:
-			'bg-gray-500 px-2 py-1 text-gray-300 rounded-lg border-[1px] border-gray-800 sm:hover:bg-gray-600 transition',
+			'bg-gray-500 px-2 py-1 text-gray-300 rounded-lg border-[1px] border-gray-800 transition',
 		or: 'mx-auto',
 	};
 
@@ -72,20 +72,20 @@ const LogInForm = (props) => {
 	};
 
 	const submitBtnType = () => {
-		const btnType = formIsValid ? (
+		const btnStyle = formIsValid
+			? classes.logInBtn
+			: classes.logInDisabled;
+
+		return (
 			<button
-				className={classes.logInBtn}
+				className={btnStyle}
 				type='submit'
 				onClick={userSignedIn}
+				disabled={!formIsValid}
 			>
 				Log In
 			</button>
-		) : (
-			<button className={classes.logInDisabled} type='submit'>
-				Log In
-			</button>
 		);
-		return btnType;
 	};
 
 	return (

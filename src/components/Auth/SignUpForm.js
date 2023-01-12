@@ -81,20 +81,20 @@ const SignUpForm = (props) => {
 	}, [emailValid, passwordValid]);
 
 	const submitBtnType = () => {
-		const btnType = formIsValid ? (
+		const btnStyle = formIsValid
+			? classes.signUpBtn
+			: classes.signUpDisabled;
+
+		return (
 			<button
-				className={classes.signUpBtn}
+				className={btnStyle}
 				type='submit'
 				onClick={submitUserInfo}
+				disabled={!formIsValid}
 			>
 				Sign Up
 			</button>
-		) : (
-			<button className={classes.signUpDisabled} type='submit'>
-				Sign Up
-			</button>
 		);
-		return btnType;
 	};
 
 	return (
