@@ -6,7 +6,7 @@ import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => {
 	const classes = {
-		footer: 'w-full h-fit py-2 bg-gray-500 flex flex-col',
+		footer: 'w-full h-fit py-2 bg-gray-500 flex flex-col fixed bottom-0',
 		content: 'm-auto',
 		row: 'flex flex-row justify-center',
 		text: 'text-white mx-auto text-center mx-2 text-sm',

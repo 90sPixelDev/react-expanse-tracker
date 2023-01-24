@@ -9,8 +9,8 @@ import { collection, addDoc } from 'firebase/firestore';
 const NewExpense = (props) => {
 	const classes = {
 		sectionNew:
-			'mb-2 h-[90%] w-[90%] max-w-[450px] bg-gray-100 border-2 border-gray-200 rounded-3xl',
-		parent: 'w-full w-full h-full grid place-items-center rounded-3xl',
+			'mb-2 w-[90%] max-w-[450px] bg-gray-100 border-2 border-gray-200 rounded-3xl h-fit',
+		parent: 'w-full h-full grid place-items-center rounded-3xl p-2',
 		button: 'bg-white sm:hover:bg-gray-200 rounded-lg w-max h-max py-1 px-2',
 	};
 	const [revealedForm, setRevealedForm] = useState(false);

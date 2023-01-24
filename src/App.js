@@ -18,6 +18,7 @@ import GuestLogInForm from './components/Auth/GuestLogInForm';
 const App = (props) => {
 	const classes = {
 		or: 'text-center',
+		wrapper: 'absolute h-[100%] w-[100%]',
 		testBtn: 'bg-red-300',
 	};
 
@@ -71,7 +72,7 @@ const App = (props) => {
 	};
 
 	return (
-		<>
+		<div className={classes.wrapper}>
 			<Header />
 			<Wrapper>
 				{!validUser ? (
@@ -98,9 +99,9 @@ const App = (props) => {
 						/>
 					</UserIDCon.Provider>
 				)}
-				<Footer />
 			</Wrapper>
-		</>
+			<Footer />
+		</div>
 	);
 };
 

@@ -68,7 +68,6 @@ const ExpenseForm = (props) => {
 			.replace(/T.*/, '')
 			.split('-')
 			.join('-');
-		console.log(currDate);
 		return currDate;
 	};
 

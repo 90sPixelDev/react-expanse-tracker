@@ -6,7 +6,7 @@ import autoAnimate from '@formkit/auto-animate';
 const ExpensesList = (props) => {
 	const classes = {
 		expenses:
-			'flex flex-col flex-nowrap gap-4 items-center self-start overflow-auto w-[100%] bg-gradient-to-r from-white via-black/10 to-white py-3 sm:h-[50vh] h-[70vh] border-gray-300 border-x-2',
+			'flex flex-col flex-nowrap gap-4 items-center self-start overflow-auto w-[100%] bg-gradient-to-r from-white via-black/10 to-white py-3 h-full border-gray-300 border-x-2 sm:h-[60vh] h-[45vh]',
 		noContent: 'm-auto font-bold',
 	};
 	const expensesParentRef = useRef(null);

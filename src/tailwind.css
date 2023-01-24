@@ -16,7 +16,8 @@ body,
 
 #root {
 	background: white;
-	overflow: auto;
+	height: 100%;
+	overflow: hidden;
 }
 #backdrop-root {
 	position: fixed;
