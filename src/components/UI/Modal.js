@@ -21,7 +21,7 @@ const ModalBackdrop = (props) => {
 					<h1 className={classes.title}>Error!</h1>
 				</div>
 				<p className={classes.text}>
-					Invalid expense info provided.
+					Invalid or missing expense info provided.
 				</p>
 				<button
 					className={classes.button}

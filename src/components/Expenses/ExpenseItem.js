@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import ExpenseDate from './ExpenseDate';
 import PropTypes from 'prop-types';
-import { ItemToDelCon } from '../Context/item-to-delete-context';
+import { funcsContext } from '../Context/FuncContext';
 
 const ExpenseItem = (props) => {
 	const [title, setTitle] = useState(props.title);
@@ -66,7 +66,7 @@ const ExpenseItem = (props) => {
 			break;
 	}
 
-	const deleteItemFunction = useContext(ItemToDelCon);
+	const funcs = useContext(funcsContext);
 
 	return (
 		<li className={classes.expenseParent} style={cateoryStyle}>
@@ -86,7 +86,7 @@ const ExpenseItem = (props) => {
 			<button
 				className={classes.xButton}
 				onClick={() => {
-					deleteItemFunction(props.id);
+					funcs.funcDel(props.id);
 				}}
 			>
 				x

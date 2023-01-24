@@ -61,7 +61,7 @@ const Footer = () => {
 				</div>
 				<p className={classes.text}>
 					Created, designed, and developed with ❤️ by Lien Font
-					&copy; 2022
+					&copy; 2023
 				</p>
 			</div>
 		</footer>

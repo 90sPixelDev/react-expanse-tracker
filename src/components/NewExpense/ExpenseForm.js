@@ -62,6 +62,16 @@ const ExpenseForm = (props) => {
 		resetForm();
 	};
 
+	const getCurrentDate = () => {
+		const currDate = new Date()
+			.toISOString()
+			.replace(/T.*/, '')
+			.split('-')
+			.join('-');
+		console.log(currDate);
+		return currDate;
+	};
+
 	return (
 		<form className={classes.form} onSubmit={submitHandler}>
 			<div className={classes.container}>
@@ -93,8 +103,8 @@ const ExpenseForm = (props) => {
 						<input
 							className={classes.input}
 							type='date'
-							min='2019-01-01'
-							max='2023-01-01'
+							min='2000-01-01'
+							max={getCurrentDate()}
 							name='expense-date'
 							ref={enteredDateRef}
 						/>

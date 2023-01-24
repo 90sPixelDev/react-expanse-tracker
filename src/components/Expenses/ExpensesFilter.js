@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { addYearsOptions, randomKeyGenerator } from '../../utils/utils';
 
 const ExpensesFilter = (props) => {
 	const classes = {
@@ -21,10 +22,9 @@ const ExpensesFilter = (props) => {
 				value={props.year}
 			>
 				<option value='All'>All</option>
-				<option value='2022'>2022</option>
-				<option value='2021'>2021</option>
-				<option value='2020'>2020</option>
-				<option value='2019'>2019</option>
+				{addYearsOptions().map((year) => (
+					<option key={randomKeyGenerator(year)}>{year}</option>
+				))}
 			</select>
 		</div>
 	);

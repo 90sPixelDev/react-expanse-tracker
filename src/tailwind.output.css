@@ -1100,20 +1100,12 @@ body,
     height: 50vh;
   }
 
-  .sm\:h-\[10vh\]{
-    height: 10vh;
-  }
-
   .sm\:w-\[620px\]{
     width: 620px;
   }
 
   .sm\:w-\[8em\]{
     width: 8em;
-  }
-
-  .sm\:w-\[20vw\]{
-    width: 20vw;
   }
 
   .sm\:flex-row{

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ExpensesChart from '../Chart/ExpensesChart';
+import { addYearsOptions, randomKeyGenerator } from '../../utils/utils';
 
 const Stats = (props) => {
 	const classes = {
@@ -155,6 +156,10 @@ const Stats = (props) => {
 			);
 	});
 
+	useEffect(() => {
+		addAll();
+	}, []);
+
 	return (
 		<section className={classes.wholeSection}>
 			<div className={classes.subSection}>
@@ -166,10 +171,11 @@ const Stats = (props) => {
 						value={selectedStatFilter.year}
 					>
 						<option>All</option>
-						<option>2022</option>
-						<option>2021</option>
-						<option>2020</option>
-						<option>2019</option>
+						{addYearsOptions().map((year) => (
+							<option key={randomKeyGenerator(year)}>
+								{year}
+							</option>
+						))}
 					</select>
 				</div>
 				<div className={classes.miniRow}>
