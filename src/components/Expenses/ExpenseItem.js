@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { funcsContext } from '../Context/FuncContext';
 
 const ExpenseItem = (props) => {
-	const [title, setTitle] = useState(props.title);
+	// const [title, setTitle] = useState(props.title);
 
 	const classes = {
 		expenseParent:
@@ -12,7 +12,7 @@ const ExpenseItem = (props) => {
 		spacing: 'flex items-center justify-between ml-4 mr-2 my-2 col-start-1 col-end-3 row-start-1 row-end-3',
 		flexLayout: 'flex flex-row w-full justify-between items-center',
 		expenseTitle:
-			'text-gray-700 group-hover:text-black font-bold text-[4vw] xsm:text-xl sm:text-2xl my-auto break-words w-full',
+			'text-gray-700 group-hover:text-black font-bold text-[4vw] xsm:text-xl sm:text-2xl my-auto break-words max-w-fit w-[33%]',
 		expenseAmt: '',
 		expenseAmtText: 'text-[4vw] xsm:text-xl',
 		xButton: 'bg-white w-full min-w-[20px] h-[100%] rounded-tr-full border-2 sm:hover:bg-red-200 row-start-1 col-start-2',
@@ -76,13 +76,20 @@ const ExpenseItem = (props) => {
 		else
 			return 'bg-white w-fit h-fit m-auto min-w-[100px] text-center p-2 rounded-3xl border-2 border-gray-200 text-[4vw] xsm:text-xl';
 	};
+	const titleTextSizeHandler = () => {
+		const charaLength = props.title.toString().length;
+		if (charaLength > 12)
+			return 'text-gray-700 group-hover:text-black font-bold text-[3vw] my-auto break-words max-w-fit w-[33%]';
+		else
+			return 'text-gray-700 group-hover:text-black font-bold text-[4vw] xsm:text-xl sm:text-2xl my-auto break-words max-w-fit w-[33%]';
+	};
 
 	return (
 		<li className={classes.expenseParent} style={cateoryStyle}>
 			<div className={classes.spacing}>
 				<div className={classes.flexLayout}>
 					<ExpenseDate date={props.date} />
-					<p className={classes.expenseTitle}>{title}</p>
+					<p className={classes.expenseTitle}>{props.title}</p>
 					<div className={classes.expenseAmt}>
 						<p className={atmTextSizeHandler()}>
 							${props.amount}
