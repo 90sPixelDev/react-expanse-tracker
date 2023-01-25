@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const ExpenseForm = (props) => {
 	const classes = {
-		form: 'max-w-[500px] h-full p-1 sm:p-5 m-auto grid place-items-center rounded-3xl',
+		form: 'max-w-[500px] h-fit p-1 sm:p-5 m-auto grid place-items-center rounded-3xl',
 		container: 'flex flex-col h-full justify-evenly',
 		smScreenParent: 'w-full min-w-[300px] flex flex-row justify-center',
 		controlParent: 'm-auto sm:p-1',

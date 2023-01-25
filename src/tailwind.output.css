@@ -634,6 +634,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-\[90\%\]{
   width: 90%;
 }
+.w-\[33\%\]{
+  width: 33%;
+}
 .w-fit{
   width: fit-content;
 }
@@ -654,9 +657,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .w-\[100px\]{
   width: 100px;
-}
-.w-\[33\%\]{
-  width: 33%;
 }
 .w-\[50\%\]{
   width: 50%;
@@ -681,6 +681,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .max-w-\[250px\]{
   max-width: 250px;
+}
+.max-w-fit{
+  max-width: fit-content;
 }
 .max-w-\[500px\]{
   max-width: 500px;

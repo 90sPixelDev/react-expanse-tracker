@@ -9,12 +9,10 @@ const ExpenseItem = (props) => {
 	const classes = {
 		expenseParent:
 			'w-[90%] group bg-red-50 sm:hover:scale-105 sm:hover:shadow-gray-800/100 shadow-lg transition-all ease-in-out pb-[.025em] rounded-[2em] grid grid-rows-expenseItem grid-cols-expenseItem',
-		spacing: 'flex items-center justify-between ml-4 mr-2 my-2 col-start-1 col-end-3 row-start-1 row-end-3',
-		flexLayout: 'flex flex-row w-full justify-between items-center',
-		expenseTitle:
-			'text-gray-700 group-hover:text-black font-bold text-[4vw] xsm:text-xl sm:text-2xl my-auto break-words max-w-fit w-[33%]',
-		expenseAmt: '',
-		expenseAmtText: 'text-[4vw] xsm:text-xl',
+		spacing: 'flex items-center justify-between pl-4 pr-2 my-2 col-start-1 col-end-3 row-start-1 row-end-3 w-full',
+		flexLayout:
+			'flex flex-row w-full min-w-0 justify-between items-center overflow-hidden',
+		expenseAmtParent: 'pl-2',
 		xButton: 'bg-white w-full min-w-[20px] h-[100%] rounded-tr-full border-2 sm:hover:bg-red-200 row-start-1 col-start-2',
 		category:
 			'text-center w-[100%] rounded-b-full row-start-3 col-start-1 col-end-3',
@@ -78,10 +76,10 @@ const ExpenseItem = (props) => {
 	};
 	const titleTextSizeHandler = () => {
 		const charaLength = props.title.toString().length;
-		if (charaLength > 12)
-			return 'text-gray-700 group-hover:text-black font-bold text-[3vw] my-auto break-words max-w-fit w-[33%]';
+		if (charaLength > 16)
+			return 'lg:text-gray-600 lg:group-hover:text-black font-bold text-[3vw] xsm:text-xl sm:text-2xl my-auto break-words min-w-0 text-center w-[100%]';
 		else
-			return 'text-gray-700 group-hover:text-black font-bold text-[4vw] xsm:text-xl sm:text-2xl my-auto break-words max-w-fit w-[33%]';
+			return 'lg:text-gray-600 lg:group-hover:text-black font-bold text-[4vw] xsm:text-xl sm:text-2xl my-auto break-words min-w-0 text-center w-[33%]';
 	};
 
 	return (
@@ -89,8 +87,8 @@ const ExpenseItem = (props) => {
 			<div className={classes.spacing}>
 				<div className={classes.flexLayout}>
 					<ExpenseDate date={props.date} />
-					<p className={classes.expenseTitle}>{props.title}</p>
-					<div className={classes.expenseAmt}>
+					<p className={titleTextSizeHandler()}>{props.title}</p>
+					<div className={classes.expenseAmtParent}>
 						<p className={atmTextSizeHandler()}>
 							${props.amount}
 						</p>
