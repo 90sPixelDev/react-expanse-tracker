@@ -9,16 +9,15 @@ const ExpenseItem = (props) => {
 	const classes = {
 		expenseParent:
 			'w-[90%] group bg-red-50 sm:hover:scale-105 sm:hover:shadow-gray-800/100 shadow-lg transition-all ease-in-out pb-[.025em] rounded-[2em] grid grid-rows-expenseItem grid-cols-expenseItem',
-		spacing: 'flex items-center justify-between mx-4 my-2',
-		flexLayout: 'inline-flex w-100',
+		spacing: 'flex items-center justify-between ml-4 mr-2 my-2 col-start-1 col-end-3 row-start-1 row-end-3',
+		flexLayout: 'flex flex-row w-full justify-between items-center',
 		expenseTitle:
-			'text-gray-700 group-hover:text-black font-bold text-[4vw] xsm:text-xl sm:text-2xl my-auto p-3',
-		expenseAmt:
-			'bg-white w-fit min-w-[100px] text-center p-3 rounded-3xl border-2 border-gray-200',
+			'text-gray-700 group-hover:text-black font-bold text-[4vw] xsm:text-xl sm:text-2xl my-auto break-words w-full',
+		expenseAmt: '',
 		expenseAmtText: 'text-[4vw] xsm:text-xl',
-		end: 'flex flex-row gap-4',
-		xButton: 'bg-white w-full min-w-[20px] h-[30%] rounded-tr-full border-2 sm:hover:bg-red-200',
-		category: 'text-center w-[100%] rounded-b-full col-span-3',
+		xButton: 'bg-white w-full min-w-[20px] h-[100%] rounded-tr-full border-2 sm:hover:bg-red-200 row-start-1 col-start-2',
+		category:
+			'text-center w-[100%] rounded-b-full row-start-3 col-start-1 col-end-3',
 	};
 
 	let cateoryStyle = { backgroundColor: 'rgb(255, 255, 255)' };
@@ -68,16 +67,24 @@ const ExpenseItem = (props) => {
 
 	const funcs = useContext(funcsContext);
 
+	const atmTextSizeHandler = () => {
+		const charaLength = props.amount.toString().length;
+		if (charaLength > 6)
+			return 'bg-white w-fit h-fit m-auto min-w-[100px] text-center p-2 rounded-3xl border-2 border-gray-200 text-[3vw] xsm:text-xl';
+		else if (charaLength > 10)
+			return 'bg-white w-fit h-fit m-auto min-w-[100px] text-center p-2 rounded-3xl border-2 border-gray-200 text-[2vw] xsm:text-xl';
+		else
+			return 'bg-white w-fit h-fit m-auto min-w-[100px] text-center p-2 rounded-3xl border-2 border-gray-200 text-[4vw] xsm:text-xl';
+	};
+
 	return (
 		<li className={classes.expenseParent} style={cateoryStyle}>
 			<div className={classes.spacing}>
 				<div className={classes.flexLayout}>
 					<ExpenseDate date={props.date} />
 					<p className={classes.expenseTitle}>{title}</p>
-				</div>
-				<div className={classes.end}>
 					<div className={classes.expenseAmt}>
-						<p className={classes.expenseAmtText}>
+						<p className={atmTextSizeHandler()}>
 							${props.amount}
 						</p>
 					</div>
